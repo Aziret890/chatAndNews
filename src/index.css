@@ -4,6 +4,7 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Montserrat", sans-serif;
 }
 .container {
   max-width: 1140px;
@@ -13,9 +14,9 @@ a {
   cursor: pointer;
   text-decoration: none;
 }
-button{
+button {
   border: none;
 }
-li{
+li {
   list-style: none;
 }
