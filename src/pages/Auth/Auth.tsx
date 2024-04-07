@@ -4,6 +4,7 @@ import "./Auth.scss";
 import { Input } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 function Auth() {
+  //vnwespngvweon
   const nav = useNavigate();
   return (
     <section
