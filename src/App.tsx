@@ -5,6 +5,7 @@ import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import Auth from "./pages/Auth/Auth";
 import Registration from "./pages/Registration/Registration";
 import NotFount from "./pages/NotFount/NotFount";
+import DataUser from "./pages/dataUser/DataUser";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +55,14 @@ const router = createBrowserRouter([
     element: (
       <>
         <NotFount />
+      </>
+    ),
+  },
+  {
+    path: "/data/user",
+    element: (
+      <>
+        <DataUser />
       </>
     ),
   },
