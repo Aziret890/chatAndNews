@@ -12,7 +12,7 @@ function Registration() {
       <section
         style={{
           background: `url(${Back}) center/cover`,
-          height: "100vh",
+          height: "100%",
           width: "100wh",
         }}
         className="pt-[125px]"

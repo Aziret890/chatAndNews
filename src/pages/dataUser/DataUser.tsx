@@ -1,11 +1,9 @@
 import React from "react";
-import Back from "../../shared/images/backgroundReg.png";
-import "./Auth.scss";
-import { Input } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
-function Auth() {
-  //vnwespngvweon
+import Back from "../../shared/images/backgroundReg.png";
+import { Input } from "@chakra-ui/react";
+function DataUser() {
   const nav = useNavigate();
   return (
     <>
@@ -21,19 +19,31 @@ function Auth() {
         <div className="container">
           <div className="block__auth">
             <div className="block__auth__title mt-[77px] flex justify-start items-start gap-[50px] pl-[14%]">
-              <button onClick={() => nav("/registration")}>РЕГИСТРАЦИЯ</button>
               <div className="flex flex-col gap-[1px] items-center">
-                <button onClick={() => nav("/login")}> ВОЙТИ </button>
+                <button onClick={() => nav("/registration")}>
+                  РЕГИСТРАЦИЯ
+                </button>
                 <div className="block__auth__title_active"></div>
+              </div>
+              <div className="flex flex-col gap-[1px] items-center">
+                <button onClick={() => nav("/auth")}> ВОЙТИ </button>
               </div>
             </div>
             <div className="block__auth__form flex flex-col items-center mt-[88px]">
               <div className="flex flex-col gap-[20px]">
-                <p>Ваш логин</p>
+                <p>Телеграмм ссылка</p>
                 <Input background={"none"} size="lg" />
               </div>
-              <div className="flex flex-col gap-[20px] mt-[28px]">
-                <p>Ваш пароль</p>
+              <div className="flex flex-col gap-[20px]">
+                <p>Тел.номер</p>
+                <Input background={"none"} size="lg" />
+              </div>
+              <div className="flex flex-col gap-[20px]">
+                <p>Группа</p>
+                <Input background={"none"} size="lg" />
+              </div>
+              <div className="flex flex-col gap-[20px]">
+                <p>Направление</p>
                 <Input background={"none"} size="lg" />
               </div>
               <button className="mt-[58px]">Вход</button>
@@ -51,4 +61,4 @@ function Auth() {
   );
 }
 
-export default Auth;
+export default DataUser;
