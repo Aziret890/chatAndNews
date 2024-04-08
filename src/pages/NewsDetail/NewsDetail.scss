@@ -1,0 +1,92 @@
+.new_detail {
+  background: rgb(30, 30, 30);
+  height: 100vh;
+  &__content {
+    padding-top: 103px;
+    &_infos {
+    }
+    &_info {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      &_left {
+        width: 433px;
+        height: 555px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+      &_rigth {
+        h2 {
+          color: rgb(255, 240, 240);
+          font-family: Montserrat;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 24px;
+          letter-spacing: 0%;
+          text-align: left;
+          max-width: 514px;
+          margin-bottom: 15px;
+        }
+        p {
+          color: rgb(255, 240, 240);
+          font-family: Montserrat;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 24px;
+          letter-spacing: 0%;
+          text-align: left;
+          max-width: 553px;
+        }
+        div {
+          margin-top: 35px;
+          display: flex;
+          justify-content: end;
+          gap: 100px;
+          align-items: center;
+          h1 {
+            color: rgb(255, 255, 255);
+            font-family: Montserrat;
+            font-size: 23px;
+            font-weight: 600;
+            line-height: 28px;
+            letter-spacing: 0%;
+            text-align: left;
+          }
+          //   button {
+          //     color: rgb(255, 255, 255);
+          //     font-family: Montserrat;
+          //     font-size: 20px;
+          //     font-weight: 600;
+          //     line-height: 24px;
+          //     letter-spacing: 0%;
+          //     text-align: left;
+          //     padding: 11px 16px;
+          //     box-sizing: border-box;
+          //     border: 2px solid rgb(255, 255, 255);
+          //     border-radius: 25px;
+          //   }
+        }
+      }
+    }
+    &_comments {
+      margin-top: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .new_detail__content_comment {
+        border-radius: 9px;
+        width: 1043px;
+        background: rgb(217, 217, 217);
+        padding: 10px 17px 25px 17px;
+        &_flex {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 14px;
+        }
+      }
+    }
+  }
+}

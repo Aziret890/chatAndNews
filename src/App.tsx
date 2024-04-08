@@ -6,6 +6,7 @@ import Auth from "./pages/Auth/Auth";
 import Registration from "./pages/Registration/Registration";
 import NotFount from "./pages/NotFount/NotFount";
 import DataUser from "./pages/dataUser/DataUser";
+import { ChakraProvider } from "@chakra-ui/react";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -70,7 +71,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <ChakraProvider>
+        <RouterProvider router={router} />
+      </ChakraProvider>
     </>
   );
 }
