@@ -27,20 +27,6 @@
           max-width: 100%;
           height: 100%;
         }
-
-        &__mini {
-          width: 51px;
-          height: 48px;
-          border-radius: 50%;
-          border: 2px solid rgb(255, 186, 186);
-          background: rgb(255, 255, 255);
-          position: absolute;
-          top: 160px;
-          left: 130px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
       }
 
       &__footer {
