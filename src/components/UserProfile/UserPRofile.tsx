@@ -1,27 +1,7 @@
-/* eslint-disable no-empty */
+import "../UserProfile/userProfile.scss";
 import "../profile/profile.scss";
 import avatatIcon from "../../assets/profile-avatar.svg";
-import minIcon from "../../assets/profile-mini-icon.svg";
-import { useRef } from "react";
-function Profile() {
-  const numRef = useRef<null | HTMLInputElement>(null);
-  const familyRef = useRef<null | HTMLInputElement>(null);
-
-  function HandleValidation() {
-    if (numRef.current) {
-      numRef.current.style.border =
-        numRef.current.value.trim() === ""
-          ? "4px solid red"
-          : "4px solid green";
-    }
-    if (familyRef.current) {
-      familyRef.current.style.border =
-        familyRef.current.value.trim() === ""
-          ? "4px solid red"
-          : "4px solid green";
-    }
-  }
-
+function UserPRofile() {
   return (
     <>
       <section className="profile">
@@ -34,20 +14,11 @@ function Profile() {
                   alt=""
                   className="profile__content__cards__back__avatar"
                 />
-
-                <div className="profile__content__cards__back__mini">
-                  <img
-                    src={minIcon}
-                    alt=""
-                    className="profile__content__cards__back__avatar__mini"
-                  />
-                </div>
               </div>
 
               <div className="profile__content__cards__footer">
                 <div className="profile__content__cards__footer__inputs">
                   <input
-                    ref={numRef}
                     type="text"
                     className="profile__content__cards__footer__inputs__input"
                     required
@@ -55,7 +26,6 @@ function Profile() {
                   />
 
                   <input
-                    ref={familyRef}
                     type="text"
                     className="profile__content__cards__footer__inputs__family"
                     placeholder="Фамилия"
@@ -75,12 +45,6 @@ function Profile() {
                     className="profile__content__cards__footer__inputs__biography"
                     placeholder="Биография"
                   />
-                  <button
-                    onClick={HandleValidation}
-                    className="profile__content__cards__footer__inputs__btn"
-                  >
-                    Сохранить
-                  </button>
                 </div>
               </div>
             </div>
@@ -91,4 +55,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default UserPRofile;
