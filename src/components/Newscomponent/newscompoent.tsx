@@ -37,10 +37,12 @@ function Newscomponent() {
           </div>
           <div className="news">
             <img src={GroupFhoto} alt="" />
+
             <h1 className={scss.newsTitle}>Title</h1>
             <h3 className="h2">
               Всего за 4 часа научим <br />
-              основам SEO продвижения сайта
+              основам SEO продвижения сайта основам SEO продвижения сайта
+              основам SEO продвижения сайта основам SEO продвижения сайта
             </h3>
           </div>
         </div>
