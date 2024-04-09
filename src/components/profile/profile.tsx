@@ -48,7 +48,6 @@ function Profile() {
                   />
                 </div>
               </div>
-
               <div className="profile__content__cards__footer">
                 <div className="profile__content__cards__footer__inputs">
                   <input
@@ -62,7 +61,7 @@ function Profile() {
                   <input
                     ref={familyRef}
                     type="text"
-                    className="profile__content__cards__footer__inputs__family"
+                    className="profile__content__cards__footer__inputs__lastname"
                     placeholder="Фамилия"
                   />
                   <input

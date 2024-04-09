@@ -11,7 +11,7 @@ function Newscomponent() {
         <div className="container">
           <div className={scss.newsMainBlock}>
             <div className="news">
-              <img src={imgLog} alt="" />
+              <img src={imgLog} alt="" style={{ width: "100%" }} />
               <h1 className={scss.newsTitle}>Title</h1>
               <h3 className="h2">
                 Всего за 4 часа научим <br />
@@ -19,7 +19,7 @@ function Newscomponent() {
               </h3>
             </div>
             <div className="news">
-              <img src={flow} alt="" />
+              <img src={flow} alt="" style={{ width: "100%" }} />
               <h1 className={scss.newsTitle}>Title</h1>
               <h3 className="h2">
                 Всего за 4 часа научим <br />

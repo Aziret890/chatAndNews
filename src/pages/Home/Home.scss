@@ -1,0 +1,13 @@
+.Home__component {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 489px) {
+  .Home__component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
