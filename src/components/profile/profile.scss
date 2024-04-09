@@ -1,4 +1,15 @@
 .profile {
+  margin-top: 80px;
+  &__title {
+    // color: rgb(255, 255, 255);
+    color: black;
+    text-align: center;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 28px;
+    padding-bottom: 33px;
+    text-transform: uppercase;
+  }
   &__content {
     display: flex;
     justify-content: center;
