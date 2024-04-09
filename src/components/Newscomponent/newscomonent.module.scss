@@ -1,7 +1,8 @@
 .newsMainBlock {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
   margin: 40px;
   padding: 0 10px;
 }
@@ -16,15 +17,16 @@
 .newsMainBlock img {
   width: 100%;
   height: 200px;
-  font-size: 290px;
 }
 
 .newsMainBlock {
   display: flex;
-  flex-wrap: wrap;
+
   margin: 40px;
 
-  .news {
+  .news img {
+    width: 100%;
+    height: auto;
     width: calc(50% - 20px);
     margin-bottom: 20px;
 
