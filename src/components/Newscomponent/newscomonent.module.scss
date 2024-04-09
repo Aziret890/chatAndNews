@@ -1,19 +1,16 @@
-
-
 .newsMainBlock {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 40px;
   padding: 0 10px;
-
 }
 
 .newsTitle {
   display: flex;
   align-items: flex-start;
   justify-content: start;
-  color:black;
+  color: black;
 }
 
 .newsMainBlock img {
@@ -22,16 +19,13 @@
   font-size: 290px;
 }
 
-
-
-
 .newsMainBlock {
   display: flex;
-  flex-wrap: wrap; // Разрешает элементам переноситься на следующую строку при необходимости
+  flex-wrap: wrap;
   margin: 40px;
 
   .news {
-    width: calc(50% - 20px); // Половина ширины контейнера минус отступы
+    width: calc(50% - 20px);
     margin-bottom: 20px;
 
     img {
@@ -46,10 +40,14 @@
 
   @media (max-width: 768px) {
     .news {
-      width: calc(100% - 20px); // Полная ширина контейнера минус отступы
+      width: calc(100% - 20px);
+    }
+  }
+  @media (max-width: 489px) {
+    .newsMainBlock {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
-
-
-///////////////
