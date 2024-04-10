@@ -8,6 +8,9 @@ import NotFount from "./pages/NotFount/NotFount";
 import DataUser from "./pages/dataUser/DataUser";
 import { ChakraProvider } from "@chakra-ui/react";
 import InfoUser from "./pages/InfoUser/InfoUser";
+
+import Profile from "./components/profile/profile";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -73,6 +76,14 @@ const router = createBrowserRouter([
     element: (
       <>
         <InfoUser />
+    path: "/PageProfile",
+    element: <Profile />,
+  },
+  {
+    path: "/data/user",
+    element: (
+      <>
+        <DataUser />
       </>
     ),
   },

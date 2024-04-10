@@ -1,0 +1,241 @@
+.profile {
+  margin-top: 80px;
+  &__title {
+    // color: rgb(255, 255, 255);
+    color: black;
+    text-align: center;
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 28px;
+    padding-bottom: 33px;
+    text-transform: uppercase;
+  }
+  &__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__cards {
+      max-width: 100%;
+      height: 441px;
+      border-radius: 20px;
+      background: rgb(134, 7, 7);
+      padding: 39px 0 39px;
+
+      &__back {
+        border: 4px solid rgb(255, 186, 186);
+        background: rgb(255, 255, 255);
+        max-width: 215px;
+        height: 203px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: 155px;
+        bottom: 15px;
+
+        &__avatar img {
+          max-width: 100%;
+          height: 100%;
+        }
+
+        &__mini {
+          width: 51px;
+          height: 48px;
+          border-radius: 50%;
+          border: 2px solid rgb(255, 186, 186);
+          background: rgb(255, 255, 255);
+          position: absolute;
+          top: 160px;
+          left: 130px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      &__footer {
+        max-width: 525px;
+        height: auto;
+        border-radius: 20px;
+        background: rgb(255, 255, 255);
+
+        &__inputs {
+          &__input {
+            width: 95%;
+            height: 52px;
+            margin: 12px 12px;
+            box-sizing: border-box;
+            border: 1px solid rgb(134, 7, 7);
+            border-radius: 20px;
+            outline: none;
+            background: url(../../assets/iconInputName.svg) no-repeat 10px,
+              url(../../assets/iconhr.svg) no-repeat 58px;
+            padding-left: 65px;
+          }
+          &__input::placeholder {
+            color: rgb(134, 7, 7);
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 21px;
+            text-transform: capitalize;
+            color: rgb(134, 7, 7);
+          }
+          &__lastname {
+            width: 95%;
+            height: 52px;
+            margin: 12px 12px;
+            box-sizing: border-box;
+            border: 1px solid rgb(134, 7, 7);
+            border-radius: 20px;
+            outline: none;
+            background: url(../../assets/iconffamily.svg) no-repeat 10px,
+              url(../../assets/iconhr.svg) no-repeat 58px;
+            padding-left: 65px;
+          }
+
+          &__lastname::placeholder {
+            color: rgb(134, 7, 7);
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 21px;
+            text-transform: capitalize;
+            color: rgb(134, 7, 7);
+          }
+          &__tel {
+            width: 95%;
+            height: 52px;
+            margin: 12px 12px;
+            box-sizing: border-box;
+            border: 1px solid rgb(134, 7, 7);
+            border-radius: 20px;
+            outline: none;
+            background: url(../../assets/tel.svg) no-repeat 10px,
+              url(../../assets/iconhr.svg) no-repeat 58px;
+            padding-left: 65px;
+          }
+
+          &__tel::placeholder {
+            color: rgb(134, 7, 7);
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 21px;
+            text-transform: capitalize;
+            color: rgb(134, 7, 7);
+          }
+          &__email {
+            width: 95%;
+            height: 52px;
+            margin: 12px 12px;
+            box-sizing: border-box;
+            border: 1px solid rgb(134, 7, 7);
+            border-radius: 20px;
+            outline: none;
+            background: url(../../assets/email.svg) no-repeat 10px,
+              url(../../assets/iconhr.svg) no-repeat 58px;
+            padding-left: 65px;
+          }
+          &__email::placeholder {
+            color: rgb(134, 7, 7);
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 21px;
+            text-transform: capitalize;
+            color: rgb(134, 7, 7);
+          }
+          &__biography {
+            width: 95%;
+            height: 52px;
+            margin: 12px 12px;
+            box-sizing: border-box;
+            border: 1px solid rgb(134, 7, 7);
+            border-radius: 20px;
+            outline: none;
+            background: url(../../assets/biography.svg) no-repeat 10px,
+              url(../../assets/iconhr.svg) no-repeat 58px;
+            padding-left: 65px;
+          }
+
+          &__biography::placeholder {
+            color: rgb(134, 7, 7);
+            font-size: 17px;
+            font-weight: 400;
+            line-height: 21px;
+            text-transform: capitalize;
+            color: rgb(134, 7, 7);
+          }
+
+          &__btn {
+            box-sizing: border-box;
+            border: 1px solid rgb(134, 7, 7);
+            border-radius: 20px;
+            background: rgb(134, 7, 7);
+            width: 95%;
+            height: 52px;
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 24px;
+            text-transform: uppercase;
+            margin: 16px 14px;
+          }
+          &__icon {
+            position: absolute;
+            left: 300px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 505px) {
+  .profile__content__cards__back {
+    position: relative;
+    left: 145px;
+  }
+}
+@media (max-width: 489px) {
+  .profile__content__cards__back {
+    max-width: 205px;
+    height: 195px;
+    position: relative;
+    left: 138px;
+  }
+}
+@media (max-width: 464px) {
+  .profile__content__cards__back {
+    position: relative;
+    left: 125px;
+  }
+}
+@media (max-width: 445px) {
+  .profile__content__cards__back {
+    position: relative;
+    left: 110px;
+  }
+}
+@media (max-width: 395px) {
+  .profile__content__cards__back {
+    position: relative;
+    left: 95px;
+  }
+}
+@media (max-width: 365px) {
+  .profile__content__cards__back {
+    position: relative;
+    left: 80px;
+  }
+}
+@media (max-width: 345px) {
+  .profile__content__cards__back {
+    position: relative;
+    left: 68px;
+  }
+}
+@media (max-width: 325px) {
+  .profile__content__cards__back {
+    position: relative;
+    left: 55px;
+  }
+}
