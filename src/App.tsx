@@ -75,9 +75,9 @@ const router = createBrowserRouter([
     path: "/chat",
     element: (
       <>
-        <InfoUser />
-    path: "/PageProfile",
-    element: <Profile />,
+        <Profile />,
+      </>
+    ),
   },
   {
     path: "/data/user",
