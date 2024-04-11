@@ -4,7 +4,6 @@ import avatatIcon from "../../assets/profile-avatar.svg";
 import minIcon from "../../assets/profile-mini-icon.svg";
 import { useRef } from "react";
 import Header2 from "../header2/header2";
-import InfoUser from "../../pages/InfoUser/InfoUser";
 function Profile() {
   const numRef = useRef<null | HTMLInputElement>(null);
   const familyRef = useRef<null | HTMLInputElement>(null);
@@ -92,7 +91,6 @@ function Profile() {
                 </div>
               </div>
             </div>
-            <InfoUser />
           </div>
         </div>
       </section>

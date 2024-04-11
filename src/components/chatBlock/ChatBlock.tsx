@@ -2,7 +2,6 @@ import "./ChatBlock.scss";
 // import { Input } from "antd";
 import { AudioOutlined } from "@ant-design/icons";
 import { Input, Space } from "antd";
-import type { SearchProps } from "antd/es/input/Search";
 import Search from "antd/es/input/Search";
 function ChatBlock() {
   const data = [
@@ -20,7 +19,17 @@ function ChatBlock() {
     <div className="chat_block">
       <div className="container">
         <div className="chat_block__content">
-          {/* <h1>участники сообщества</h1> */}
+          <h1
+            className="chat_block__content__title"
+            style={{
+              color: "black",
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "20px",
+            }}
+          >
+            участники сообщества
+          </h1>
           <div className="chat_block__content__block">
             <div className="chat_block__content__block__info">
               <h1>Кубанычбеков азирет</h1>
