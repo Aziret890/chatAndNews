@@ -24,7 +24,7 @@ function Header() {
               </button>
             </div>
             <div className="header__content__navs">
-              <Link to="/" className="header__content__navs__nav">
+              <Link to="/PageUser" className="header__content__navs__nav">
                 <img src={IconUsers} alt="" />
               </Link>
               <Link to="/" className="header__content__navs__nav">

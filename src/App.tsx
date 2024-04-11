@@ -7,9 +7,8 @@ import Registration from "./pages/Registration/Registration";
 import NotFount from "./pages/NotFount/NotFount";
 import DataUser from "./pages/dataUser/DataUser";
 import { ChakraProvider } from "@chakra-ui/react";
-import InfoUser from "./pages/InfoUser/InfoUser";
-
 import Profile from "./components/profile/profile";
+import InfoUser from "./pages/InfoUser/InfoUser";
 
 const router = createBrowserRouter([
   {
@@ -72,7 +71,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/chat",
+    path: "/PageProfile",
     element: (
       <>
         <Profile />,
@@ -84,6 +83,14 @@ const router = createBrowserRouter([
     element: (
       <>
         <DataUser />
+      </>
+    ),
+  },
+  {
+    path: "/PageUser",
+    element: (
+      <>
+        <InfoUser />
       </>
     ),
   },
