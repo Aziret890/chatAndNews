@@ -1,0 +1,185 @@
+.block__auth {
+  box-sizing: border-box;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 7px;
+  max-width: 742px;
+  height: 802px;
+  background: rgba(27, 8, 8, 0.8);
+  margin-left: 18%;
+  &__title {
+    button {
+      border-radius: none;
+      background: none;
+      padding: 9px 13px;
+      color: rgb(255, 255, 255);
+      font-family: Montserrat;
+      font-size: 17px;
+      font-weight: 500;
+      line-height: 21px;
+      letter-spacing: 0%;
+      text-align: left;
+      text-transform: uppercase;
+    }
+    &_active {
+      border-radius: 3px;
+      width: 80px;
+      height: 4px;
+      background: rgb(134, 7, 7);
+    }
+  }
+  &__form {
+    input {
+      box-sizing: border-box;
+      border: 0.5px solid rgba(0, 0, 0, 0.6);
+      border-radius: 15px;
+      width: 517px;
+      height: 68px;
+      padding-left: 20px;
+      color: rgb(255, 255, 255);
+      font-family: Montserrat;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0%;
+    }
+    p {
+      color: rgb(255, 255, 255);
+      font-family: Montserrat;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 22px;
+      letter-spacing: 0%;
+    }
+
+    button {
+      border-radius: 15px;
+      width: 517px;
+      height: 68px;
+      background: rgb(160, 22, 22);
+    }
+    .block__auth__form_p {
+      color: rgb(255, 255, 255);
+      font-family: Montserrat;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 18px;
+      letter-spacing: 0%;
+      text-align: left;
+    }
+  }
+}
+@media (max-width: 1005px) {
+  .block__auth {
+    margin-left: 12%;
+  }
+}
+@media (max-width: 933px) {
+  .block__auth {
+    margin-left: 11%;
+  }
+}
+@media (max-width: 843px) {
+  .block__auth {
+    margin-left: 5%;
+  }
+}
+@media (max-width: 797px) {
+  .block__auth {
+    margin-left: 11%;
+    max-width: 600px;
+    height: 802px;
+  }
+  .block__auth__title {
+    padding-left: 10%;
+  }
+}
+
+@media (max-width: 719px) {
+  .block__auth {
+    margin-left: 10%;
+    max-width: 500px;
+    height: 802px;
+  }
+  .block__auth__title {
+    padding-left: 10%;
+  }
+  .block__auth__form input {
+    width: 330px;
+  }
+
+  .block__auth__form button {
+    width: 70%;
+  }
+}
+@media (max-width: 680px) {
+  .block__auth {
+    margin-left: 19%;
+    max-width: 400px;
+    height: 700px;
+  }
+  .block__auth__form input {
+    width: 280px;
+  }
+  .block__auth__title button {
+    font-size: 10px;
+  }
+  .block__auth__title {
+    gap: 10px;
+  }
+  .block__auth__title_active {
+    width: 55px;
+  }
+}
+@media (max-width: 540px) {
+  .block__auth {
+    margin-left: 19%;
+    max-width: 320px;
+    height: 700px;
+    &__form {
+      input {
+        width: 200px;
+        height: 50px;
+      }
+      p {
+        font-size: 12px;
+      }
+      button {
+        height: 40px;
+        width: 50%;
+      }
+    }
+  }
+}
+@media (max-width: 449px) {
+  .block__auth {
+    margin-left: 19%;
+    max-width: 290px;
+    height: 650px;
+    &__form {
+      input {
+        width: 220px;
+        height: 45px;
+      }
+      p {
+        font-size: 10px;
+      }
+      button {
+        height: 35px;
+        width: 48%;
+      }
+    }
+  }
+  .block__auth__title {
+    padding-left: 0;
+  }
+}
+@media (max-width: 400px) {
+  .block__auth {
+    margin-left: 10%;
+  }
+}
+@media (max-width: 355px) {
+  .block__auth {
+    margin-left: 6%;
+  }
+}

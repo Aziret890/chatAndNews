@@ -10,6 +10,10 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Profile from "./components/profile/profile";
 import InfoUser from "./pages/InfoUser/InfoUser";
 import Chat from "./components/chat/chat";
+import AdminPage from "./pages/AdminPage/AdminPage";
+import Password from "./components/password/Password";
+import AuthAdmin from "./pages/AuthAdmin/Auth";
+
 
 const router = createBrowserRouter([
   {
@@ -46,6 +50,13 @@ const router = createBrowserRouter([
   {
     path: "/PageProfile",
     element: <Profile />,
+    path: "/chat",
+    element: (
+      <>
+        <Profile />,
+      </>
+    ),
+
   },
   {
     path: "/data/user",
@@ -58,6 +69,21 @@ const router = createBrowserRouter([
   {
     path: "/pageChat",
     element: <Chat />,
+
+    path: "/admin",
+    element: (
+      <>
+        <Password />
+      </>
+    ),
+  },
+  {
+    path: "/admin/auth",
+    element: (
+      <>
+        <AuthAdmin />
+      </>
+    ),
   },
 ]);
 function App() {
