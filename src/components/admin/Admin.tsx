@@ -50,11 +50,11 @@ function Admin() {
               <div />
               <div className="mt-[20px] admin__content__block-textArea">
                 <Text color={"white"} mb="8px">
-                  Введите текст: {value}
+                  Введите текст:
                 </Text>
                 <Textarea
-                  value={value}
                   onChange={handleInputChange}
+                  color={"white"}
                   placeholder="текст статии"
                   size="sm"
                 />

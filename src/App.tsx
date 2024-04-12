@@ -11,6 +11,7 @@ import InfoUser from "./pages/InfoUser/InfoUser";
 
 import Profile from "./components/profile/profile";
 import AdminPage from "./pages/AdminPage/AdminPage";
+import Password from "./components/password/Password";
 
 const router = createBrowserRouter([
   {
@@ -92,7 +93,8 @@ const router = createBrowserRouter([
     path: "/admin",
     element: (
       <>
-        <AdminPage />
+        {/* <AdminPage /> */}
+        <Password/>
       </>
     ),
   },

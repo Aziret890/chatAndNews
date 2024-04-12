@@ -1,0 +1,20 @@
+.password {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .password__content__inputs {
+    min-width: 550px;
+  }
+}
+@media (max-width:600px) {
+    .password {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .password__content__inputs {
+          min-width: 350px;
+        }
+      }
+}
