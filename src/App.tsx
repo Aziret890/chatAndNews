@@ -7,8 +7,6 @@ import Registration from "./pages/Registration/Registration";
 import NotFount from "./pages/NotFount/NotFount";
 import DataUser from "./pages/dataUser/DataUser";
 import { ChakraProvider } from "@chakra-ui/react";
-import InfoUser from "./pages/InfoUser/InfoUser";
-
 import Profile from "./components/profile/profile";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import Password from "./components/password/Password";
