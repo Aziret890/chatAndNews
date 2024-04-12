@@ -12,6 +12,7 @@ import InfoUser from "./pages/InfoUser/InfoUser";
 import Chat from "./components/chat/chat";
 import Password from "./components/password/Password";
 import AuthAdmin from "./pages/AuthAdmin/Auth";
+import Chatdetail from "./components/chatdetail/chatdetail";
 
 const router = createBrowserRouter([
   {
@@ -71,11 +72,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin/auth",
-    element: (
-      <>
-        <AuthAdmin />
-      </>
-    ),
+    element: <AuthAdmin />,
   },
   {
     path: "/pageChat",
@@ -84,6 +81,10 @@ const router = createBrowserRouter([
   {
     path: "/PageProfile",
     element: <Profile />,
+  },
+  {
+    path: "/PageDetailchat",
+    element: <Chatdetail />,
   },
 ]);
 function App() {
