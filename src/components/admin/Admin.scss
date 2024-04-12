@@ -1,0 +1,11 @@
+.admin {
+  background: #1c1b1b;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+  .admin__content__block-input{
+    button{
+        padding: 7px 10px;
+    }
+  }
+}

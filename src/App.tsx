@@ -10,6 +10,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import InfoUser from "./pages/InfoUser/InfoUser";
 
 import Profile from "./components/profile/profile";
+import AdminPage from "./pages/AdminPage/AdminPage";
 
 const router = createBrowserRouter([
   {
@@ -84,6 +85,14 @@ const router = createBrowserRouter([
     element: (
       <>
         <DataUser />
+      </>
+    ),
+  },
+  {
+    path: "/admin",
+    element: (
+      <>
+        <AdminPage />
       </>
     ),
   },
