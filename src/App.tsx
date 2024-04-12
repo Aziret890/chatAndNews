@@ -10,6 +10,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Profile from "./components/profile/profile";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import Password from "./components/password/Password";
+import AuthAdmin from "./pages/AuthAdmin/Auth";
 
 const router = createBrowserRouter([
   {
@@ -91,8 +92,15 @@ const router = createBrowserRouter([
     path: "/admin",
     element: (
       <>
-        {/* <AdminPage /> */}
-        <Password/>
+        <Password />
+      </>
+    ),
+  },
+  {
+    path: "/admin/auth",
+    element: (
+      <>
+        <AuthAdmin />
       </>
     ),
   },
