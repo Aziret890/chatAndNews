@@ -9,90 +9,55 @@ import DataUser from "./pages/dataUser/DataUser";
 import { ChakraProvider } from "@chakra-ui/react";
 import Profile from "./components/profile/profile";
 import InfoUser from "./pages/InfoUser/InfoUser";
+import Chat from "./components/chat/chat";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <Home />
-      </>
-    ),
+    element: <Home />,
   },
   {
     path: "/news",
-    element: (
-      <>
-        <News />
-      </>
-    ),
+    element: <News />,
   },
   {
     path: "/news/:id",
-    element: (
-      <>
-        <NewsDetail />
-      </>
-    ),
+    element: <NewsDetail />,
   },
 
   {
     path: "/auth",
-    element: (
-      <>
-        <Auth />
-      </>
-    ),
+    element: <Auth />,
   },
 
   {
     path: "/registration",
-    element: (
-      <>
-        <Registration />
-      </>
-    ),
+    element: <Registration />,
   },
 
   {
     path: "/*",
-    element: (
-      <>
-        <NotFount />
-      </>
-    ),
+    element: <NotFount />,
   },
   {
     path: "/data/user",
-    element: (
-      <>
-        <DataUser />
-      </>
-    ),
+    element: <DataUser />,
   },
   {
     path: "/PageProfile",
-    element: (
-      <>
-        <Profile />,
-      </>
-    ),
+    element: <Profile />,
   },
   {
     path: "/data/user",
-    element: (
-      <>
-        <DataUser />
-      </>
-    ),
+    element: <DataUser />,
   },
   {
     path: "/PageUser",
-    element: (
-      <>
-        <InfoUser />
-      </>
-    ),
+    element: <InfoUser />,
+  },
+  {
+    path: "/pageChat",
+    element: <Chat />,
   },
 ]);
 function App() {
