@@ -1,7 +1,5 @@
 import "./ChatBlock.scss";
-// import { Input } from "antd";
-import { AudioOutlined } from "@ant-design/icons";
-import { Input, Space } from "antd";
+import { Space } from "antd";
 import Search from "antd/es/input/Search";
 function ChatBlock() {
   const data = [

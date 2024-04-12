@@ -27,7 +27,7 @@ function Header() {
               <Link to="/PageUser" className="header__content__navs__nav">
                 <img src={IconUsers} alt="" />
               </Link>
-              <Link to="/" className="header__content__navs__nav">
+              <Link to="/pageChat" className="header__content__navs__nav">
                 <img src={IconChat} alt="" />
               </Link>
               <Link to="/PageProfile" className="header__content__navs__nav">

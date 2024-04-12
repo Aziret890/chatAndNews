@@ -8,87 +8,68 @@ import NotFount from "./pages/NotFount/NotFount";
 import DataUser from "./pages/dataUser/DataUser";
 import { ChakraProvider } from "@chakra-ui/react";
 import Profile from "./components/profile/profile";
+import InfoUser from "./pages/InfoUser/InfoUser";
+import Chat from "./components/chat/chat";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import Password from "./components/password/Password";
 import AuthAdmin from "./pages/AuthAdmin/Auth";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <Home />
-      </>
-    ),
+    element: <Home />,
   },
   {
     path: "/news",
-    element: (
-      <>
-        <News />
-      </>
-    ),
+    element: <News />,
   },
   {
     path: "/news/:id",
-    element: (
-      <>
-        <NewsDetail />
-      </>
-    ),
+    element: <NewsDetail />,
   },
 
   {
     path: "/auth",
-    element: (
-      <>
-        <Auth />
-      </>
-    ),
+    element: <Auth />,
   },
 
   {
     path: "/registration",
-    element: (
-      <>
-        <Registration />
-      </>
-    ),
+    element: <Registration />,
   },
 
   {
     path: "/*",
-    element: (
-      <>
-        <NotFount />
-      </>
-    ),
+    element: <NotFount />,
   },
   {
     path: "/data/user",
-    element: (
-      <>
-        <DataUser />
-      </>
-    ),
+    element: <DataUser />,
   },
   {
+    path: "/PageProfile",
+    element: <Profile />,
     path: "/chat",
     element: (
       <>
         <Profile />,
       </>
     ),
+
   },
   {
     path: "/data/user",
-    element: (
-      <>
-        <DataUser />
-      </>
-    ),
+    element: <DataUser />,
   },
   {
+    path: "/PageUser",
+    element: <InfoUser />,
+  },
+  {
+    path: "/pageChat",
+    element: <Chat />,
+
     path: "/admin",
     element: (
       <>
