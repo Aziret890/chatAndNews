@@ -13,6 +13,7 @@ import Chat from "./components/chat/chat";
 import Password from "./components/password/Password";
 import AuthAdmin from "./pages/AuthAdmin/Auth";
 import { ToastContainer, toast } from "react-toastify";
+import Chatdetail from "./components/chatdetail/chatdetail";
 
 import "react-toastify/dist/ReactToastify.css";
 // minified version is also included
@@ -75,11 +76,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin/auth",
-    element: (
-      <>
-        <AuthAdmin />
-      </>
-    ),
+    element: <AuthAdmin />,
   },
   {
     path: "/pageChat",
@@ -88,6 +85,10 @@ const router = createBrowserRouter([
   {
     path: "/PageProfile",
     element: <Profile />,
+  },
+  {
+    path: "/PageDetailchat",
+    element: <Chatdetail />,
   },
 ]);
 function App() {

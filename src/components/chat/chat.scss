@@ -1,8 +1,8 @@
 .chat {
   &__content {
     background: url(../../assets/backChat.png) center/cover;
-    max-width: 50%;
-    height: 720px;
+    width: 100%;
+    height: 100vh;
     padding: 20px 65px;
 
     &__logo {
@@ -35,9 +35,17 @@
       }
 
       &__hrr {
-        margin-top: 8px;
+        margin: 8px 0 0 20px;
         max-width: 77px;
-        height: 3px;
+        height: 4px;
+        border: none;
+        border-radius: 10px;
+        background: rgb(225, 0, 0);
+      }
+      &__active {
+        margin: 8px 0 0 140px;
+        max-width: 77px;
+        height: 4px;
         border: none;
         border-radius: 10px;
         background: rgb(225, 0, 0);
@@ -60,7 +68,9 @@
     }
 
     &__card {
+      cursor: pointer;
       margin: 30px 0 0 0;
+      padding-left: 10px;
       width: 100%;
       height: 15%;
       border-radius: 12px;
@@ -99,6 +109,56 @@
         font-weight: 400;
         line-height: 18px;
       }
+
+      &__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
+  }
+}
+
+@media (max-width: 435px) {
+  .chat__content__card {
+    cursor: pointer;
+    width: 100%;
+    height: 13%;
+  }
+}
+@media (max-width: 385px) {
+  .chat__content__card {
+    cursor: pointer;
+    width: 100%;
+    height: 12%;
+  }
+
+  .chat__content__card__name {
+    font-size: 16px;
+  }
+  .chat__content__card__text {
+    font-size: 15px;
+  }
+}
+@media (max-width: 359px) {
+  .chat__content__nav__title {
+    font-size: 20px;
+  }
+  .chat__content__nav__pretitle {
+    font-size: 20px;
+  }
+}
+@media (max-width: 339px) {
+  .chat__content__card {
+    cursor: pointer;
+    width: 100%;
+    height: 11%;
+  }
+
+  .chat__content__card__name {
+    font-size: 15px;
+  }
+  .chat__content__card__text {
+    font-size: 14px;
   }
 }
