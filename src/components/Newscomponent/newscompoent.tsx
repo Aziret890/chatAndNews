@@ -1,49 +1,48 @@
 import imgLog from "../../assets/img.jpg";
 import flow from "../../assets/flowers.jpg";
 import cat from "../../assets/кет.jpg";
-import GroupFhoto from "../../assets/счастливая-группа-молодых-многорасовых-людей.webp";
 import scss from "../Newscomponent/newscomonent.module.scss";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getNews } from "../../utils/api/new-fetch";
+import { INewsItem, setNews } from "../../store/slice/news-slice";
+import { useAppSelector } from "../../store/store";
 
 function Newscomponent() {
+  const dispatch = useDispatch();
+  const { news } = useAppSelector(({ news }) => news);
+
+  async function get() {
+    const result = await getNews();
+    dispatch(setNews(result as INewsItem[]));
+  }
+  useEffect(() => {
+    get();
+  }, []);
   return (
     <>
       <div id="mainnews">
         <div className="container">
           <div className={scss.newsMainBlock}>
-            <div className="news">
-              <img src={imgLog} alt="" style={{ width: "100%" }} />
-              <h1 className={scss.newsTitle}>Title</h1>
-              <h3 className="h2">
-                Всего за 4 часа научим <br />
-                основам SEO продвижения сайта
-              </h3>
-            </div>
-            <div className="news">
-              <img src={flow} alt="" style={{ width: "100%" }} />
-              <h1 className={scss.newsTitle}>Title</h1>
-              <h3 className="h2">
-                Всего за 4 часа научим <br />
-                основам SEO продвижения сайта
-              </h3>
-            </div>
-            <div className="news">
-              <img src={cat} alt="" />
-              <h1 className={scss.newsTitle}>Title</h1>
-              <h3 className="h2">
-                Всего за 4 часа научим <br />
-                основам SEO продвижения сайта
-              </h3>
-            </div>
-          </div>
-          <div className="news">
-            <img src={GroupFhoto} alt="" />
-
-            <h1 className={scss.newsTitle}>Title</h1>
-            <h3 className="h2">
-              Всего за 4 часа научим <br />
-              основам SEO продвижения сайта основам SEO продвижения сайта
-              основам SEO продвижения сайта основам SEO продвижения сайта
-            </h3>
+            {news.map((el) => (
+              <>
+                <div className="news" style={{ maxWidth: "100%" }}>
+                  <img src={el.image} alt="" style={{ maxWidth: "100%" }} />
+                  <h1 className={scss.newsTitle}>{el.title}</h1>
+                  <h3 className="h2">
+                    {el.info}
+                    <br />
+                  </h3>
+                </div>
+                {/* <div className="news">
+                  <img src={el.image} alt="" />
+                  <h1 className={scss.newsTitle}>Title</h1>
+                  <h3 className="h2">
+                    Всего за 4 часа научим <br />
+                  </h3>
+                </div> */}
+              </>
+            ))}
           </div>
         </div>
       </div>

@@ -13,6 +13,7 @@ import Chat from "./components/chat/chat";
 import Password from "./components/password/Password";
 import AuthAdmin from "./pages/AuthAdmin/Auth";
 import Chatdetail from "./components/chatdetail/chatdetail";
+import Admin from "./components/admin/Admin";
 
 const router = createBrowserRouter([
   {
@@ -66,7 +67,7 @@ const router = createBrowserRouter([
     path: "/admin",
     element: (
       <>
-        <Password />
+        <Admin />
       </>
     ),
   },
