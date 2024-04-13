@@ -12,9 +12,13 @@ import InfoUser from "./pages/InfoUser/InfoUser";
 import Chat from "./components/chat/chat";
 import Password from "./components/password/Password";
 import AuthAdmin from "./pages/AuthAdmin/Auth";
+import { ToastContainer, toast } from "react-toastify";
 import Chatdetail from "./components/chatdetail/chatdetail";
 import Admin from "./components/admin/Admin";
 
+import "react-toastify/dist/ReactToastify.css";
+// minified version is also included
+// import 'react-toastify/dist/ReactToastify.min.css';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -94,6 +98,7 @@ function App() {
       <ChakraProvider>
         <RouterProvider router={router} />
       </ChakraProvider>
+      <ToastContainer />
     </>
   );
 }
