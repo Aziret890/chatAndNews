@@ -14,6 +14,7 @@ import Password from "./components/password/Password";
 import AuthAdmin from "./pages/AuthAdmin/Auth";
 import { ToastContainer, toast } from "react-toastify";
 import Chatdetail from "./components/chatdetail/chatdetail";
+import Admin from "./components/admin/Admin";
 
 import "react-toastify/dist/ReactToastify.css";
 // minified version is also included
@@ -70,7 +71,7 @@ const router = createBrowserRouter([
     path: "/admin",
     element: (
       <>
-        <Password />
+        <Admin />
       </>
     ),
   },

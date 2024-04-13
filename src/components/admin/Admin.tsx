@@ -2,25 +2,29 @@ import React from "react";
 import "./Admin.scss";
 import Header2 from "../header2/header2";
 import { FaChevronLeft } from "react-icons/fa";
-import {
-  Button,
-  ButtonGroup,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Text,
-  Textarea,
-  WrapItem,
-} from "@chakra-ui/react";
+import { Button, Input, Text, Textarea, WrapItem } from "@chakra-ui/react";
+import { create } from "../../utils/api/new-fetch";
 function Admin() {
-  const [value, setValue] = React.useState("");
-  const [show, setShow] = React.useState(false);
+  const [values, setValues] = React.useState({
+    title: "",
+    text: "",
+    image: "",
+    date: Date.now(),
+  });
 
-  let handleInputChange = (e) => {
-    let inputValue = e.target.value;
-    setValue(inputValue);
+  let handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { value, name } = e.target;
+    setValues((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
-  const handleClick = () => setShow(!show);
+
+  async function createdAt() {
+    await create(values);
+  }
 
   return (
     <>
@@ -39,6 +43,11 @@ function Admin() {
                 color="white"
                 placeholder="название статии"
                 _placeholder={{ color: "white" }}
+                name="title"
+                value={values.title}
+                onChange={handleInputChange}
+                required
+                minLength={10}
               />
               <div />
               <div className="mt-[20px] admin__content__block-input" />
@@ -46,6 +55,10 @@ function Admin() {
                 color="white"
                 placeholder="фотография"
                 _placeholder={{ color: "white" }}
+                name="image"
+                value={values.image}
+                onChange={handleInputChange}
+                required
               />
               <div />
               <div className="mt-[20px] admin__content__block-textArea">
@@ -53,13 +66,20 @@ function Admin() {
                   Введите текст:
                 </Text>
                 <Textarea
-                  onChange={handleInputChange}
                   color={"white"}
                   placeholder="текст статии"
                   size="sm"
+                  name="text"
+                  value={values.text}
+                  onChange={handleInputChange}
+                  required
+                  minLength={30}
                 />
               </div>
             </div>
+            <Button onClick={createdAt} mt={4}>
+              Create
+            </Button>
           </div>
         </div>
       </section>
