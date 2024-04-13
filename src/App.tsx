@@ -15,6 +15,8 @@ import AuthAdmin from "./pages/AuthAdmin/Auth";
 import { ToastContainer, toast } from "react-toastify";
 import Chatdetail from "./components/chatdetail/chatdetail";
 import Admin from "./components/admin/Admin";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
+import FireBaseInit from "./firebace/firebse";
 
 import "react-toastify/dist/ReactToastify.css";
 // minified version is also included
