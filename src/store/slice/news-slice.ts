@@ -6,6 +6,7 @@ export interface INewsItem {
   id: number;
   date: string;
   image: string;
+  // comments: string;
 }
 
 type TypeInitialState = {

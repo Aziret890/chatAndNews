@@ -4,6 +4,9 @@ import Header2 from "../header2/header2";
 import { FaChevronLeft } from "react-icons/fa";
 import { Button, Input, Text, Textarea, WrapItem } from "@chakra-ui/react";
 import { create } from "../../utils/api/new-fetch";
+import createAdmin from "../../utils/admin/adminData";
+console.log(createAdmin());
+
 function Admin() {
   const [values, setValues] = React.useState({
     title: "",
