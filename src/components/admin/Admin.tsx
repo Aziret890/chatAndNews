@@ -10,6 +10,7 @@ function Admin() {
     text: "",
     image: "",
     date: Date.now(),
+    id: Date.now(),
   });
 
   let handleInputChange = (

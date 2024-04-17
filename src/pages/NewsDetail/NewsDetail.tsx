@@ -1,6 +1,6 @@
-import React from "react";
 import Header from "../../components/header/Header";
 import "./NewsDetail.scss";
+import { useParams } from "react-router-dom";
 import {
   Modal,
   ModalOverlay,
@@ -15,10 +15,14 @@ import {
   FormControl,
   Input,
 } from "@chakra-ui/react";
+import { useRef } from "react";
+
 function NewsDetail() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const initialRef = React.useRef(null);
-  const finalRef = React.useRef(null);
+  const initialRef = useRef(null);
+  const finalRef = useRef(null);
+  const { id } = useParams();
+  console.log(id);
   return (
     <>
       <Header />
@@ -27,6 +31,7 @@ function NewsDetail() {
           <div className="new_detail__content">
             <div className="new_detail__content">
               <div className="new_detail__content_infos">
+                {" "}
                 <div className="new_detail__content_info">
                   <div className="new_detail__content_info_left">
                     <img
@@ -58,7 +63,7 @@ function NewsDetail() {
                     </p>
                     <div>
                       <h1>Комментарии</h1>
-                      {/* <button>Оставить комментарий</button> */}
+                      <button>Оставить комментарий</button>
                       <>
                         <Button onClick={onOpen}>Оставить комментарий</Button>
                         <Modal

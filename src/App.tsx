@@ -14,6 +14,7 @@ import Password from "./components/password/Password";
 import AuthAdmin from "./pages/AuthAdmin/Auth";
 import Chatdetail from "./components/chatdetail/chatdetail";
 import Admin from "./components/admin/Admin";
+import Kalendar from "./components/Kalendar/kalendar";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
   {
     path: "/PageDetailchat",
     element: <Chatdetail />,
+  },
+  {
+    path: "/",
+    element: <Kalendar />,
   },
 ]);
 function App() {
