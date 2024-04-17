@@ -1,9 +1,11 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
 import newsSlice from "./slice/news-slice";
+import adminSlice from "./slice/admin";
 
 const rootSlice = combineSlices({
   news: newsSlice,
+  admin: adminSlice,
 });
 
 export const store = configureStore({
