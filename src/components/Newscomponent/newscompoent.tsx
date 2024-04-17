@@ -1,6 +1,3 @@
-import imgLog from "../../assets/img.jpg";
-import flow from "../../assets/flowers.jpg";
-import cat from "../../assets/кет.jpg";
 import scss from "../Newscomponent/newscomonent.module.scss";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";

@@ -17,10 +17,12 @@ import Chatdetail from "./components/chatdetail/chatdetail";
 import Admin from "./components/admin/Admin";
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import FireBaseInit from "./firebace/firebse";
-
 import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
+import AdminPage from "./pages/AdminPage/AdminPage";
 // minified version is also included
 // import 'react-toastify/dist/ReactToastify.min.css';
+// const { admin } = useSelector((res) => res);
 const router = createBrowserRouter([
   {
     path: "/",
@@ -71,11 +73,9 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: (
-      <>
-        <Admin />
-      </>
-    ),
+    // element: <Admin />,
+    element: <AdminPage />,
+    // element: <>{admin.password.payload == "" ? <Admin /> : <Password />}</>,
   },
   {
     path: "/admin/auth",
