@@ -17,6 +17,7 @@ a {
 }
 button {
   border: none;
+  cursor: pointer;
 }
 li {
   list-style: none;
