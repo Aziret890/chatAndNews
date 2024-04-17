@@ -5,13 +5,14 @@
   gap: 30px;
   margin: 40px;
   padding: 0 10px;
+  cursor: pointer;
 }
 
 .newsTitle {
-  display: flex;
-  align-items: flex-start;
-  justify-content: start;
-  color: black;
+  color: rgb(255, 240, 240);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
 }
 
 .newsMainBlock img {
@@ -33,10 +34,6 @@
     img {
       width: 100%;
       height: auto;
-    }
-
-    & h1 {
-      color: black;
     }
   }
 
