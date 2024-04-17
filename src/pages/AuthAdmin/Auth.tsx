@@ -6,20 +6,35 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
-
+import { doc, setDoc } from "firebase/firestore";
+import FireBaseInit from "../../firebace/firebse";
 function AuthAdmin() {
   const [valuePassowrd, setValuePassowrd] = useState<string>("");
   const [valueEmail, setValueEmail] = useState<string>("");
+
   const nav = useNavigate();
+
   const notify = () => toast.success("успешная регистрация");
   const notifyError = () => toast.error("регистация не прошла");
+
   const auth = getAuth();
+
+  const db = FireBaseInit().db;
+
   function createAccountAdmin() {
     createUserWithEmailAndPassword(auth, valueEmail, valuePassowrd)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("aa");
         notify();
+        // nav("/admin");
+
+        // Add a new document in collection "cities"
+        setDoc(doc(db, "admin", "dataAdmin"), {
+          email: valueEmail,
+          passowrd: valuePassowrd,
+        });
+        const cityRef = doc(db, "admin", "BJ");
+        setDoc(cityRef, { capital: true }, { merge: true });
       })
       .catch((error) => {
         console.log(error);
@@ -27,6 +42,7 @@ function AuthAdmin() {
         notifyError();
       });
   }
+
   return (
     <>
       <Header />
@@ -65,7 +81,7 @@ function AuthAdmin() {
                 />
               </div>
               <button
-                onClick={() => (createAccountAdmin(), nav("/admin"))}
+                onClick={() => createAccountAdmin()}
                 className="mt-[58px]"
               >
                 Вход
