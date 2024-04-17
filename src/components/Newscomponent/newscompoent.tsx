@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { getNews } from "../../utils/api/new-fetch";
 import { INewsItem, setNews } from "../../store/slice/news-slice";
 import { useAppSelector } from "../../store/store";
-
+import aaaa from "../../assets/backChat.png";
 function Newscomponent() {
   const dispatch = useDispatch();
   const { news } = useAppSelector(({ news }) => news);
@@ -23,8 +23,30 @@ function Newscomponent() {
           <div className={scss.newsMainBlock}>
             {news.map((el, inx) => (
               <React.Fragment key={inx}>
-                <div className="news" style={{ maxWidth: "100%" }}>
-                  <img src={el.image} alt="" style={{ maxWidth: "100%" }} />
+                <div className="news max-w-[300px] min-w-[290px] h-[200px] mb-[20px]">
+                  {el.image ? (
+                    <img
+                      src={el.image}
+                      alt="news image"
+                      style={{
+                        maxWidth: "100%",
+                        objectFit: "cover",
+                        border: "0.1px solid #000",
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src={
+                        "https://t4.ftcdn.net/jpg/04/99/93/31/360_F_499933117_ZAUBfv3P1HEOsZDrnkbNCt4jc3AodArl.jpg"
+                      }
+                      alt="image not found"
+                      style={{
+                        maxWidth: "100%",
+                        objectFit: "cover",
+                        border: "0.1px solid #000",
+                      }}
+                    />
+                  )}
                   <h1 className={scss.newsTitle}>{el.title}</h1>
                   <h3 className="h2">
                     {el.info}
