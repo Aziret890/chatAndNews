@@ -8,9 +8,14 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import { doc, setDoc } from "firebase/firestore";
 import FireBaseInit from "../../firebace/firebse";
+import { useDispatch } from "react-redux";
+import { setEmail, setPassowrd } from "../../store/slice/admin";
+
 function AuthAdmin() {
   const [valuePassowrd, setValuePassowrd] = useState<string>("");
   const [valueEmail, setValueEmail] = useState<string>("");
+
+  const dispatch = useDispatch();
 
   const nav = useNavigate();
 
@@ -23,18 +28,17 @@ function AuthAdmin() {
 
   function createAccountAdmin() {
     createUserWithEmailAndPassword(auth, valueEmail, valuePassowrd)
-      .then((userCredential) => {
-        const user = userCredential.user;
+      .then(() => {
         notify();
         // nav("/admin");
-
-        // Add a new document in collection "cities"
         setDoc(doc(db, "admin", "dataAdmin"), {
           email: valueEmail,
           passowrd: valuePassowrd,
         });
         const cityRef = doc(db, "admin", "BJ");
         setDoc(cityRef, { capital: true }, { merge: true });
+        dispatch(setEmail(valueEmail));
+        dispatch(setPassowrd(valuePassowrd));
       })
       .catch((error) => {
         console.log(error);
