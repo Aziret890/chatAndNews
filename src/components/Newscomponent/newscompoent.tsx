@@ -37,7 +37,7 @@ function Newscomponent() {
                   <img src={el.image} alt="" style={{ maxWidth: "100%" }} />
                   <h1 className={scss.newsTitle}>{el.title}</h1>
                   <h3 className="h2">
-                    {el.info}
+                    {el.text}
                     <br />
                   </h3>
                 </div>
