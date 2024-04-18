@@ -1,15 +1,18 @@
-import React from "react";
 import { Button, Checkbox, Form, type FormProps, Input } from "antd";
 import "./Passoword.scss";
-type FieldType = {
+import { useDispatch } from "react-redux";
+import { checkPassword } from "../../store/slice/admin";
+export type FieldType = {
   username?: string;
+  email?: string;
   password?: string;
-  remember?: string;
 };
 
 function Password() {
+  const dispatch = useDispatch();
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     console.log("Success:", values);
+    dispatch(checkPassword(values));
   };
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
     errorInfo
