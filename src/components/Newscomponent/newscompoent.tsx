@@ -1,5 +1,5 @@
 import scss from "../Newscomponent/newscomonent.module.scss";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getNews } from "../../utils/api/new-fetch";
 import { INewsItem, setNews } from "../../store/slice/news-slice";
@@ -55,6 +55,7 @@ function Newscomponent() {
                       }}
                     />
                   )}
+               <React.Fragment/>
           </div>
         </div>
       </div>
