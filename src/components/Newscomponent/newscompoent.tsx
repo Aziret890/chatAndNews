@@ -57,7 +57,6 @@ function Newscomponent() {
                       }}
                     />
                   )}
-                </div>
               </React.Fragment>
             ))}
           </div>
