@@ -3,8 +3,14 @@ import "./Auth.scss";
 import { Input } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
+import { useAppSelector } from "../../store/store";
 function Auth() {
   const nav = useNavigate();
+
+  const www = useAppSelector((state) => state.user);
+
+  console.log(www);
+
   return (
     <>
       <Header />

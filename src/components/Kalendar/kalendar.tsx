@@ -4,7 +4,6 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function Kalendar() {
   const [startDate] = useState(new Date());
-
   const onChange = (dates: [Date | null, Date | null]) => {
     const [start] = dates;
   };
