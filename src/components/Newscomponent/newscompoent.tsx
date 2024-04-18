@@ -57,13 +57,8 @@ function Newscomponent() {
                       }}
                     />
                   )}
-<<<<<<< HEAD
-               <React.Fragment/>
-=======
-                </div>
               </React.Fragment>
             ))}
->>>>>>> 076e19d3bd2bca163299af0976361ac3f3b8a9a6
           </div>
         </div>
       </div>
