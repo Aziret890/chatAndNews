@@ -2,8 +2,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export interface INewsItem {
   title: string;
-  info: string;
-  id: number;
+  text: string;
+  id: number | string;
   date: string;
   image: string;
   // comments: string;

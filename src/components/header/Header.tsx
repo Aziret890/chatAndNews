@@ -11,7 +11,9 @@ function Header() {
         <div className="container">
           <div className="header__content">
             <div className="header__content__logo__wrap">
-              <h3 className="header__content__logo">Motion web/news</h3>
+              <Link to="/" className="header__content__logo">
+                Motion web/news
+              </Link>
             </div>
             <div className="header__content__input">
               <input

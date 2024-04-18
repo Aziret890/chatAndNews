@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import News from "./pages/News/News";
-import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import Auth from "./pages/Auth/Auth";
+import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import Registration from "./pages/Registration/Registration";
 import NotFount from "./pages/NotFount/NotFount";
 import DataUser from "./pages/dataUser/DataUser";
@@ -10,19 +10,12 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Profile from "./components/profile/profile";
 import InfoUser from "./pages/InfoUser/InfoUser";
 import Chat from "./components/chat/chat";
-import Password from "./components/password/Password";
 import AuthAdmin from "./pages/AuthAdmin/Auth";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import Chatdetail from "./components/chatdetail/chatdetail";
-import Admin from "./components/admin/Admin";
-import { collection, doc, getDocs, setDoc } from "firebase/firestore";
-import FireBaseInit from "./firebace/firebse";
-import "react-toastify/dist/ReactToastify.css";
-import { useSelector } from "react-redux";
+import Kalendar from "./components/Kalendar/kalendar";
 import AdminPage from "./pages/AdminPage/AdminPage";
-// minified version is also included
-// import 'react-toastify/dist/ReactToastify.min.css';
-// const { admin } = useSelector((res) => res);
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -73,9 +66,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    // element: <Admin />,
     element: <AdminPage />,
-    // element: <>{admin.password.payload == "" ? <Admin /> : <Password />}</>,
   },
   {
     path: "/admin/auth",
@@ -92,6 +83,10 @@ const router = createBrowserRouter([
   {
     path: "/PageDetailchat",
     element: <Chatdetail />,
+  },
+  {
+    path: "/",
+    element: <Kalendar />,
   },
 ]);
 function App() {

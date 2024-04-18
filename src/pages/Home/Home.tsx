@@ -1,7 +1,10 @@
 import { useDispatch } from "react-redux";
 import Filter from "../../components/filter/filter";
 import Header from "../../components/header/Header";
+import Kalendar from "../../components/Kalendar/kalendar";
 import Newscomponent from "../../components/Newscomponent/newscompoent";
+import { useAppSelector } from "../../store/store";
+import "./Home.scss";
 import "./Home.scss";
 import { useAppSelector } from "../../store/store";
 import { getNews } from "../../utils/api/new-fetch";
@@ -32,6 +35,20 @@ function Home() {
             <div className="loader"></div>
           </div>
         )}
+  const { news } = useAppSelector(({ news }) => news);
+  console.log(news);
+
+  return (
+    <>
+      <div className="home">
+        <Header />
+        <div className="Home__component">
+          <div className="hero">
+            <Filter />
+            <Kalendar />
+          </div>
+          <Newscomponent />
+        </div>
       </div>
     </>
   );

@@ -2,6 +2,16 @@
   display: flex;
   justify-content: center;
 }
+.home {
+  background: rgb(30, 30, 30);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 190px;
+}
 
 @media (max-width: 489px) {
   .Home__component {
@@ -11,7 +21,7 @@
     flex-direction: column;
   }
 }
-/* HTML: <div class="loader"></div> */
+
 .loader {
   width: 130px;
   --b: 8px; 
@@ -27,3 +37,9 @@
   animation:l4 1s infinite steps(10);
 }
 @keyframes l4 {to{transform: rotate(1turn)}}
+@media (max-width: 390px) {
+  .hero {
+    display: flex;
+    gap: 65px;
+  }
+}

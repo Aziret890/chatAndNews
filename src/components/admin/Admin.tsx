@@ -1,26 +1,24 @@
-import React from "react";
 import "./Admin.scss";
 import Header2 from "../header2/header2";
 import { FaChevronLeft } from "react-icons/fa";
 import { Button, Input, Text, Textarea, WrapItem } from "@chakra-ui/react";
 import { create } from "../../utils/api/new-fetch";
+import { useState } from "react";
 
 function Admin() {
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     title: "",
     text: "",
     image: "",
     date: Date.now(),
+    id: Date.now(),
   });
 
   let handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { value, name } = e.target;
-    setValues((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setValues((prev) => ({ ...prev, [name]: value }));
   };
 
   async function createdAt() {
@@ -64,7 +62,7 @@ function Admin() {
               <div />
               <div className="mt-[20px] admin__content__block-textArea">
                 <Text color={"white"} mb="8px">
-                  Введите текст:
+                  Введите описание:
                 </Text>
                 <Textarea
                   color={"white"}
