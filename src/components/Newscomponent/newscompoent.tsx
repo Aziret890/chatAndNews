@@ -1,12 +1,11 @@
 import scss from "../Newscomponent/newscomonent.module.scss";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getNews } from "../../utils/api/new-fetch";
 import { INewsItem, setNews } from "../../store/slice/news-slice";
 import { useAppSelector } from "../../store/store";
 
 import { useNavigate } from "react-router-dom";
-
 
 function Newscomponent() {
   const dispatch = useDispatch();
@@ -31,7 +30,10 @@ function Newscomponent() {
           <div className={scss.newsMainBlock}>
             {news.map((el, inx) => (
               <React.Fragment key={inx}>
-                <div className="news max-w-[300px] min-w-[290px] h-[200px] mb-[20px]">
+                <div
+                  onClick={() => cardCLickHandler}
+                  className="news max-w-[300px] min-w-[290px] h-[200px] mb-[20px]"
+                >
                   {el.image ? (
                     <img
                       src={el.image}
@@ -55,6 +57,9 @@ function Newscomponent() {
                       }}
                     />
                   )}
+                </div>
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>
