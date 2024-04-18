@@ -12,7 +12,6 @@ import { useEffect } from "react";
 function Home() {
   const dispatch = useDispatch();
   const { news } = useAppSelector(({ news }) => news);
-
   async function get() {
     const result = await getNews();
     dispatch(setNews(result as INewsItem[]));
@@ -23,12 +22,14 @@ function Home() {
 
   return (
     <>
+      <Header />
       <div className="Home__component">
-        <Header />
         {news.length > 0 ? (
           <>
-            <Filter />
-            <Kalendar />
+            <div className="hero">
+              <Filter />
+              <Kalendar />
+            </div>
             <Newscomponent />
           </>
         ) : (

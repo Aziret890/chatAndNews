@@ -20,7 +20,7 @@ function Newscomponent() {
     get();
   }, []);
 
-  function cardCLickHandler(id: any) {
+  function cardCLickHandler(id: number | string) {
     nav("/news/" + id);
   }
   return (
@@ -31,7 +31,7 @@ function Newscomponent() {
             {news.map((el, inx) => (
               <React.Fragment key={inx}>
                 <div
-                  onClick={() => cardCLickHandler}
+                  onClick={() => cardCLickHandler(el.id)}
                   className="news max-w-[300px] min-w-[290px] h-[200px] mb-[20px]"
                 >
                   {el.image ? (
@@ -57,6 +57,7 @@ function Newscomponent() {
                       }}
                     />
                   )}
+                </div>
               </React.Fragment>
             ))}
           </div>

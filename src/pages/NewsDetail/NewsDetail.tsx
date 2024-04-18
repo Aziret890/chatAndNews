@@ -24,6 +24,7 @@ function NewsDetail() {
   const initialRef = useRef(null);
   const finalRef = useRef(null);
   const { id } = useParams();
+  console.log(id);
   const news = useSelector((state: RootState) =>
     state.news.news.find((el) => el.id == id)
   );
@@ -72,10 +73,7 @@ function NewsDetail() {
                                   />
                                 </FormControl>
 
-                                <FormControl mt={4}>
-                                  {/* <FormLabel>Last name</FormLabel> */}
-                                  {/* <Input placeholder="Last name" /> */}
-                                </FormControl>
+                                <FormControl mt={4}></FormControl>
                               </ModalBody>
 
                               <ModalFooter>
