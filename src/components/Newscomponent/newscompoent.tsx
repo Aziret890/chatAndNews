@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux";
 import { getNews } from "../../utils/api/new-fetch";
 import { INewsItem, setNews } from "../../store/slice/news-slice";
 import { useAppSelector } from "../../store/store";
+
 import { useNavigate } from "react-router-dom";
+
 
 function Newscomponent() {
   const dispatch = useDispatch();
@@ -27,29 +29,32 @@ function Newscomponent() {
       <div className="mainnews">
         <div className="container">
           <div className={scss.newsMainBlock}>
-            {news.map((el) => (
-              <>
-                <div
-                  className="news"
-                  style={{ maxWidth: "100%" }}
-                  onClick={() => cardCLickHandler(el.id)}
-                >
-                  <img src={el.image} alt="" style={{ maxWidth: "100%" }} />
-                  <h1 className={scss.newsTitle}>{el.title}</h1>
-                  <h3 className="h2">
-                    {el.text}
-                    <br />
-                  </h3>
-                </div>
-                {/* <div className="news">
-                  <img src={el.image} alt="" />
-                  <h1 className={scss.newsTitle}></h1>
-                  <h3 className="h2">
-                    Всего за 4 часа научим <br />
-                  </h3>
-                </div> */}
-              </>
-            ))}
+            {news.map((el, inx) => (
+              <React.Fragment key={inx}>
+                <div className="news max-w-[300px] min-w-[290px] h-[200px] mb-[20px]">
+                  {el.image ? (
+                    <img
+                      src={el.image}
+                      alt="news image"
+                      style={{
+                        maxWidth: "100%",
+                        objectFit: "cover",
+                        border: "0.1px solid #000",
+                      }}
+                    />
+                  ) : (
+                    <img
+                      src={
+                        "https://t4.ftcdn.net/jpg/04/99/93/31/360_F_499933117_ZAUBfv3P1HEOsZDrnkbNCt4jc3AodArl.jpg"
+                      }
+                      alt="image not found"
+                      style={{
+                        maxWidth: "100%",
+                        objectFit: "cover",
+                        border: "0.1px solid #000",
+                      }}
+                    />
+                  )}
           </div>
         </div>
       </div>
