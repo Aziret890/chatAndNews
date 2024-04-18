@@ -57,10 +57,6 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/data/user",
-    element: <DataUser />,
-  },
-  {
     path: "/PageUser",
     element: <InfoUser />,
   },
