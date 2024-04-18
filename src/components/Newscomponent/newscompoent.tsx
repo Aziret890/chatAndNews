@@ -7,7 +7,6 @@ import { useAppSelector } from "../../store/store";
 
 import { useNavigate } from "react-router-dom";
 
-
 function Newscomponent() {
   const dispatch = useDispatch();
   const { news } = useAppSelector(({ news }) => news);
@@ -31,7 +30,10 @@ function Newscomponent() {
           <div className={scss.newsMainBlock}>
             {news.map((el, inx) => (
               <React.Fragment key={inx}>
-                <div className="news max-w-[300px] min-w-[290px] h-[200px] mb-[20px]">
+                <div
+                  onClick={() => cardCLickHandler}
+                  className="news max-w-[300px] min-w-[290px] h-[200px] mb-[20px]"
+                >
                   {el.image ? (
                     <img
                       src={el.image}
@@ -55,7 +57,8 @@ function Newscomponent() {
                       }}
                     />
                   )}
-               <React.Fragment/>
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>
