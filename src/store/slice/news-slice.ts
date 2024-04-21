@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export interface INewsItem {
   title: string;
   text: string;
-  id: number | string;
+  id: number;
   date: string;
   image: string;
   // comments: string;

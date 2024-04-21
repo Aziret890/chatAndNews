@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 function Newscomponent() {
   const dispatch = useDispatch();
   const { news } = useAppSelector(({ news }) => news);
+  console.log(news);
+
   const nav = useNavigate();
 
   async function get() {
@@ -20,7 +22,7 @@ function Newscomponent() {
     get();
   }, []);
 
-  function cardCLickHandler(id: number | string) {
+  function cardCLickHandler(id: number) {
     nav("/news/" + id);
   }
   return (
