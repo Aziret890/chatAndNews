@@ -11,7 +11,9 @@ function Header() {
         <div className="container">
           <div className="header__content">
             <div className="header__content__logo__wrap">
-              <h3 className="header__content__logo">Motion web/news</h3>
+              <Link to="/" className="header__content__logo">
+                Motion web/news
+              </Link>
             </div>
             <div className="header__content__input">
               <input
@@ -24,13 +26,13 @@ function Header() {
               </button>
             </div>
             <div className="header__content__navs">
-              <Link to="/" className="header__content__navs__nav">
+              <Link to="/PageUser" className="header__content__navs__nav">
                 <img src={IconUsers} alt="" />
               </Link>
-              <Link to="/" className="header__content__navs__nav">
+              <Link to="/pageChat" className="header__content__navs__nav">
                 <img src={IconChat} alt="" />
               </Link>
-              <Link to="/" className="header__content__navs__nav">
+              <Link to="/PageProfile" className="header__content__navs__nav">
                 <img src={IconProfile} alt="" />
               </Link>
             </div>

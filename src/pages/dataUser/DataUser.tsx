@@ -1,31 +1,25 @@
-import Back from "../../shared/images/backgroundReg.png";
-import "./Registration.scss";
-import { Input } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
-import { getDatabase, ref, push, set } from "firebase/database";
+import Back from "../../shared/images/backgroundReg.png";
+import { Input } from "@chakra-ui/react";
+import { UserData, setBaseInfo } from "../../store/slice/userslice";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
-import { UserBase, setBaseInfo } from "../../store/slice/userslice";
+import { getDatabase, ref, push, set } from "firebase/database";
 
-interface Data extends UserBase {
-  password: string;
-  repeatPassword: string;
-}
-
-function Registration() {
+function DataUser() {
   const nav = useNavigate();
-  const dispatch = useDispatch();
 
-  const [userData, setUserData] = useState<Data>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    repeatPassword: "",
+  const [userData, setUserData] = useState<UserData>({
+    tgLink: "",
+    phoneNum: "",
+    group: "",
+    category: "",
   });
 
-  const handleInputchange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const dispatch = useDispatch();
+
+  const ClickDataUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setUserData((PrevData) => ({
       ...PrevData,
@@ -35,31 +29,23 @@ function Registration() {
 
   function registerHandler() {
     console.log(userData);
-    const newData: UserBase = {
-      email: userData.email,
-      firstName: userData.firstName,
-      lastName: userData.lastName,
+    const newData: UserData = {
+      tgLink: userData.tgLink,
+      phoneNum: userData.phoneNum,
+      group: userData.group,
+      category: userData.category,
     };
     const db = getDatabase();
-    const postListRef = ref(db, "users");
+    const postListRef = ref(db, "datauser");
     const newPostRef = push(postListRef);
     set(newPostRef, userData)
       .then(() => {
-        console.log("register");
+        console.log("успешно");
         dispatch(setBaseInfo(newData));
-        nav("/data/user");
       })
       .catch((error) => {
         console.log("ошикба", error);
       });
-
-    setUserData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      repeatPassword: "",
-    });
   }
   return (
     <>
@@ -87,53 +73,44 @@ function Registration() {
             </div>
             <div className="block__auth__form flex flex-col items-center mt-[88px]">
               <div className="flex flex-col gap-[20px]">
-                <p>Ваше имя</p>
+                <p>Телеграмм ссылка</p>
                 <Input
-                  name="lastName"
                   background={"none"}
                   size="lg"
-                  value={userData.lastName}
-                  onChange={handleInputchange}
+                  name="tgLink"
+                  value={userData.tgLink}
+                  onChange={ClickDataUser}
                 />
               </div>
               <div className="flex flex-col gap-[20px]">
-                <p>Ваше фамилия</p>
+                <p>Тел.номер</p>
                 <Input
-                  name="firstName"
                   background={"none"}
                   size="lg"
-                  value={userData.firstName}
-                  onChange={handleInputchange}
+                  type="number"
+                  name="phoneNum"
+                  value={userData.phoneNum}
+                  onChange={ClickDataUser}
                 />
               </div>
               <div className="flex flex-col gap-[20px]">
-                <p>Ваш email</p>
+                <p>Группа</p>
                 <Input
-                  name="email"
                   background={"none"}
                   size="lg"
-                  value={userData.email}
-                  onChange={handleInputchange}
+                  name="group"
+                  value={userData.group}
+                  onChange={ClickDataUser}
                 />
               </div>
               <div className="flex flex-col gap-[20px]">
-                <p>Ваш пароль</p>
+                <p>Направление</p>
                 <Input
-                  name="password"
                   background={"none"}
                   size="lg"
-                  value={userData.password}
-                  onChange={handleInputchange}
-                />
-              </div>
-              <div className="flex flex-col gap-[20px]">
-                <p>Повторите пароль</p>
-                <Input
-                  name="repeatPassword"
-                  background={"none"}
-                  size="lg"
-                  value={userData.repeatPassword}
-                  onChange={handleInputchange}
+                  name="category"
+                  value={userData.category}
+                  onChange={ClickDataUser}
                 />
               </div>
               <button className="mt-[58px]" onClick={registerHandler}>
@@ -153,4 +130,4 @@ function Registration() {
   );
 }
 
-export default Registration;
+export default DataUser;

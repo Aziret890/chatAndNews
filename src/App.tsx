@@ -1,67 +1,97 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import News from "./pages/News/News";
-import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import Auth from "./pages/Auth/Auth";
+import NewsDetail from "./pages/NewsDetail/NewsDetail";
 import Registration from "./pages/Registration/Registration";
 import NotFount from "./pages/NotFount/NotFount";
+import DataUser from "./pages/dataUser/DataUser";
+import { ChakraProvider } from "@chakra-ui/react";
+import Profile from "./components/profile/profile";
+import InfoUser from "./pages/InfoUser/InfoUser";
+import Chat from "./components/chat/chat";
+import AuthAdmin from "./pages/AuthAdmin/Auth";
+import { ToastContainer } from "react-toastify";
+import Chatdetail from "./components/chatdetail/chatdetail";
+import Kalendar from "./components/Kalendar/kalendar";
+import AdminPage from "./pages/AdminPage/AdminPage";
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <>
-        <Home />
-      </>
-    ),
+    element: <Home />,
   },
   {
     path: "/news",
-    element: (
-      <>
-        <News />
-      </>
-    ),
+    element: <News />,
   },
   {
     path: "/news/:id",
-    element: (
-      <>
-        <NewsDetail />
-      </>
-    ),
+    element: <NewsDetail />,
   },
 
   {
     path: "/auth",
-    element: (
-      <>
-        <Auth />
-      </>
-    ),
+    element: <Auth />,
   },
 
   {
     path: "/registration",
-    element: (
-      <>
-        <Registration />
-      </>
-    ),
+    element: <Registration />,
   },
 
   {
     path: "/*",
+    element: <NotFount />,
+  },
+  {
+    path: "/data/user",
+    element: <DataUser />,
+  },
+  {
+    path: "/chat",
     element: (
       <>
-        <NotFount />
+        <Profile />,
       </>
     ),
+  },
+  {
+    path: "/PageUser",
+    element: <InfoUser />,
+  },
+  {
+    path: "/admin",
+    element: <AdminPage />,
+  },
+  {
+    path: "/admin/auth",
+    element: <AuthAdmin />,
+  },
+  {
+    path: "/pageChat",
+    element: <Chat />,
+  },
+  {
+    path: "/PageProfile",
+    element: <Profile />,
+  },
+  {
+    path: "/PageDetailchat",
+    element: <Chatdetail />,
+  },
+  {
+    path: "/",
+    element: <Kalendar />,
   },
 ]);
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <ChakraProvider>
+        <RouterProvider router={router} />
+      </ChakraProvider>
+      <ToastContainer />
     </>
   );
 }
