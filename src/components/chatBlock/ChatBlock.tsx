@@ -53,7 +53,7 @@ function ChatBlock() {
               {data?.map((el) => (
                 <div className="chat_block__content__block__ul__li">
                   <div className="chat_block__content">
-                    <img src={el?.images} alt="imagea" />
+                    {/* <img src={el?.images} alt="imagea" /> */}
                   </div>
                   <div className="chat_block__content__info">
                     <h2>{el.title}</h2>

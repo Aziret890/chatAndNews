@@ -54,7 +54,6 @@ function Password() {
             </Form.Item>
 
             <Form.Item<FieldType>
-              name="remember"
               valuePropName="checked"
               wrapperCol={{ offset: 8, span: 16 }}
             >

@@ -1,4 +1,3 @@
-import React from "react";
 import "../UserProfile/userProfile.scss";
 import "../profile/profile.scss";
 import avatatIcon from "../../assets/profile-avatar.svg";

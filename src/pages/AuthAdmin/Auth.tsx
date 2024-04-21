@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Back from "../../shared/images/backgroundReg.png";
 import "./Auth.scss";
 import { Input } from "@chakra-ui/react";

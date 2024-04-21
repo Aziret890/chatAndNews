@@ -6,6 +6,7 @@ function Kalendar() {
   const [startDate] = useState(new Date());
   const onChange = (dates: [Date | null, Date | null]) => {
     const [start] = dates;
+    console.log(start);
   };
   return (
     <ReactDatePicker
