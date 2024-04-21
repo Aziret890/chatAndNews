@@ -36,7 +36,7 @@ function DataUser() {
       category: userData.category,
     };
     const db = getDatabase();
-    const postListRef = ref(db, "datauser");
+    const postListRef = ref(db, "users");
     const newPostRef = push(postListRef);
     set(newPostRef, userData)
       .then(() => {

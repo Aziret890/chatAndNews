@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import Chatdetail from "./components/chatdetail/chatdetail";
 import Kalendar from "./components/Kalendar/kalendar";
 import AdminPage from "./pages/AdminPage/AdminPage";
+import "react-toastify/dist/ReactToastify.css";
 
 const router = createBrowserRouter([
   {
@@ -88,6 +89,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
+      <ToastContainer />
       <ChakraProvider>
         <RouterProvider router={router} />
       </ChakraProvider>

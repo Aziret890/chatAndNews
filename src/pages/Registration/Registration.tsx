@@ -1,5 +1,6 @@
 import Back from "../../shared/images/backgroundReg.png";
 import "./Registration.scss";
+import FireBaseInit from "../../firebace/firebse"; // Импортируем инициализацию Firebase
 import { Input } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
@@ -7,7 +8,8 @@ import { getDatabase, ref, push, set } from "firebase/database";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { UserBase, setBaseInfo } from "../../store/slice/userslice";
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
 interface Data extends UserBase {
   password: string;
   repeatPassword: string;
@@ -16,6 +18,7 @@ interface Data extends UserBase {
 function Registration() {
   const nav = useNavigate();
   const dispatch = useDispatch();
+  const notify = () => toast.error("Пароли не совпадают");
 
   const [userData, setUserData] = useState<Data>({
     firstName: "",
@@ -24,6 +27,8 @@ function Registration() {
     password: "",
     repeatPassword: "",
   });
+
+  const { auth } = FireBaseInit();
 
   const handleInputchange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -34,33 +39,38 @@ function Registration() {
   };
 
   function registerHandler() {
-    console.log(userData);
-    const newData: UserBase = {
-      email: userData.email,
-      firstName: userData.firstName,
-      lastName: userData.lastName,
-    };
-    const db = getDatabase();
-    const postListRef = ref(db, "users");
-    const newPostRef = push(postListRef);
-    set(newPostRef, userData)
-      .then(() => {
-        console.log("register");
-        dispatch(setBaseInfo(newData));
-        nav("/data/user");
-      })
-      .catch((error) => {
-        console.log("ошикба", error);
+    if (userData.password !== userData.repeatPassword) {
+      notify();
+    } else {
+      const newData: UserBase = {
+        email: userData.email,
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+      };
+      createUserWithEmailAndPassword(auth, userData.email, userData.password)
+        .then((user) => console.log(user))
+        .catch((error) => console.log(error));
+      const db = getDatabase();
+      const postListRef = ref(db, "users");
+      const newPostRef = push(postListRef);
+      set(newPostRef, userData)
+        .then(() => {
+          dispatch(setBaseInfo(newData));
+          nav("/data/user");
+        })
+        .catch((error) => {
+          console.log("ошикба", error);
+        });
+      setUserData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        repeatPassword: "",
       });
-
-    setUserData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-      repeatPassword: "",
-    });
+    }
   }
+
   return (
     <>
       <Header />

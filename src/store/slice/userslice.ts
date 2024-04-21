@@ -31,7 +31,7 @@ const userSlice = createSlice({
     setUser(state, action: PayloadAction<User>) {
       state = action.payload;
     },
-    setBaseInfo(state, action: PayloadAction<UserBase>) {
+    setBaseInfo(state, action: PayloadAction<UserBase | UserData>) {
       state = { ...state, ...action.payload };
     },
     setFirstName(state, action: PayloadAction<string>) {

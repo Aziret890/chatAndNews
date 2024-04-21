@@ -24,9 +24,10 @@ function NewsDetail() {
   const initialRef = useRef(null);
   const finalRef = useRef(null);
   const { id } = useParams();
+
   console.log(id);
   const news = useSelector((state: RootState) =>
-    state.news.news.find((el) => el.id == id)
+    state.news.news.find((el) => id && el.id == +id)
   );
 
   console.log(news);
