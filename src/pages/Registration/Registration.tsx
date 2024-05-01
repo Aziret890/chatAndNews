@@ -1,34 +1,41 @@
 import Back from "../../shared/images/backgroundReg.png";
 import "./Registration.scss";
-import FireBaseInit from "../../firebace/firebse"; // Импортируем инициализацию Firebase
+import FireBaseInit from "../../firebace/firebse";
 import { Input } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
-import { getDatabase, ref, push, set } from "firebase/database";
+import { getDatabase, ref, set } from "firebase/database";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { UserBase, setBaseInfo } from "../../store/slice/userslice";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
+import uniqid from "uniqid";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+
 interface Data extends UserBase {
   password: string;
   repeatPassword: string;
 }
 
 function Registration() {
-  const nav = useNavigate();
-  const dispatch = useDispatch();
-  const notify = () => toast.error("Пароли не совпадают");
-
   const [userData, setUserData] = useState<Data>({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     repeatPassword: "",
+    id: "",
   });
 
   const { auth } = FireBaseInit();
+
+  const nav = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const notify = () => toast.error("Пароли не совпадают");
+  const notifyemail = () => toast.error("такой email уже существует");
 
   const handleInputchange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -42,35 +49,55 @@ function Registration() {
     if (userData.password !== userData.repeatPassword) {
       notify();
     } else {
-      const newData: UserBase = {
+      const newData = {
         email: userData.email,
         firstName: userData.firstName,
         lastName: userData.lastName,
       };
       createUserWithEmailAndPassword(auth, userData.email, userData.password)
-        .then((user) => console.log(user))
-        .catch((error) => console.log(error));
-      const db = getDatabase();
-      const postListRef = ref(db, "users");
-      const newPostRef = push(postListRef);
-      set(newPostRef, userData)
-        .then(() => {
-          dispatch(setBaseInfo(newData));
-          nav("/data/user");
+        .then(async (r) => {
+          const id = uniqid();
+          console.log(id);
+          const newUser: UserBase = {
+            ...newData,
+            id,
+          };
+          if (newUser.email !== newData.email) {
+            notifyemail();
+          }
+          const db = getDatabase();
+          const newPostRef = ref(db, `users/${id}`);
+          const userCollectionRef = doc(FireBaseInit().db, "users", r.user.uid);
+          const userDocSnapShot = await getDoc(userCollectionRef);
+          if (!userDocSnapShot.exists()) {
+            await setDoc(userCollectionRef, {
+              ...newUser,
+              uid: r.user.uid,
+            });
+            await setDoc(FireBaseInit().db, "userChats", r.user.uid);
+          }
+          set(newPostRef, newUser)
+            .then(() => {
+              dispatch(setBaseInfo(newUser));
+              nav("/data/user");
+            })
+            .catch((error) => {
+              console.log("ошикба", error);
+            })
+            .finally(() => {
+              setUserData({
+                firstName: "",
+                lastName: "",
+                email: "",
+                password: "",
+                repeatPassword: "",
+                id: "",
+              });
+            });
         })
-        .catch((error) => {
-          console.log("ошикба", error);
-        });
-      setUserData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "",
-        repeatPassword: "",
-      });
+        .catch((error) => console.log(error));
     }
   }
-
   return (
     <>
       <Header />
@@ -131,6 +158,7 @@ function Registration() {
                 <Input
                   name="password"
                   background={"none"}
+                  type="password"
                   size="lg"
                   value={userData.password}
                   onChange={handleInputchange}
@@ -141,6 +169,7 @@ function Registration() {
                 <Input
                   name="repeatPassword"
                   background={"none"}
+                  type="password"
                   size="lg"
                   value={userData.repeatPassword}
                   onChange={handleInputchange}

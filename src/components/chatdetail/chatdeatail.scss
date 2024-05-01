@@ -1,0 +1,138 @@
+.deatailchat {
+  background: url(../../assets/backChat.png) center/cover;
+  width: 100%;
+  height: 100vh;
+
+  &__content {
+    &__header {
+      display: flex;
+      align-items: center;
+      padding: 10px 0 30px 10px;
+      gap: 10px;
+      cursor: pointer;
+    }
+    &__title {
+      color: rgb(255, 255, 255);
+      font-size: 23px;
+      font-weight: 600;
+      line-height: 28px;
+    }
+
+    &__overflow {
+      overflow: hidden;
+      overflow-y: scroll;
+      height: 550px;
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+    }
+    &__box {
+      position: relative;
+      margin: 20px 0 0;
+      top: 200px;
+      left: 30px;
+      width: 250px;
+      height: 77px;
+      border-radius: 9px;
+      background: rgb(165, 62, 62);
+
+      &__title {
+        padding: 10px 10px 0;
+        color: rgb(255, 255, 255);
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 18px;
+      }
+
+      &__text {
+        color: rgb(255, 255, 255);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        padding: 1px 11px;
+      }
+    }
+    &__user {
+      position: relative;
+      margin: 20px 0 0;
+      top: 350px;
+      width: 250px;
+      left: 0;
+      height: 77px;
+      border-radius: 9px;
+      background: rgb(67, 47, 47);
+      &.owner {
+        left: 780px;
+      }
+
+      &__title {
+        padding: 10px 10px 0;
+        color: rgb(255, 255, 255);
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 18px;
+      }
+
+      &__text {
+        color: rgb(255, 255, 255);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        padding: 1px 11px;
+      }
+    }
+
+    &__input {
+      position: fixed;
+      top: 630px;
+      width: 67%;
+      height: 70px;
+      outline: none;
+      background: rgb(67, 47, 47);
+      text-transform: capitalize;
+      color: rgb(169, 165, 165);
+      padding-left: 14px;
+
+      &::placeholder {
+        color: rgb(169, 165, 165);
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 24px;
+      }
+    }
+
+    &__icon {
+      position: fixed;
+      top: 645px;
+      left: 1150px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .deatailchat {
+    &__content {
+      &__user {
+        position: relative;
+        margin: 20px 0 0;
+        top: 350px;
+        left: 50px;
+        width: 250px;
+        height: 77px;
+        border-radius: 9px;
+      }
+      &__input {
+        position: fixed;
+        max-width: 450px;
+        top: 634px;
+        left: 0px;
+        height: 70px;
+        outline: none;
+        padding-left: 14px;
+      }
+    }
+  }
+}
+.deatailchat::-webkit-scrollbar {
+  display: none;
+}

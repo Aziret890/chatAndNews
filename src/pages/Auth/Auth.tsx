@@ -3,13 +3,37 @@ import "./Auth.scss";
 import { Input } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
-import { useAppSelector } from "../../store/store";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import FireBaseInit from "../../firebace/firebse";
+import { useState } from "react";
+import { toast } from "react-toastify";
 function Auth() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const authnotify = () => toast.success("Вы вошли в аккаунт");
+  const notify = () => toast.error("неверный пароль или логин");
+
   const nav = useNavigate();
 
-  const www = useAppSelector((state) => state.user);
+  const { auth } = FireBaseInit();
 
-  console.log(www);
+  function AuthClickHandler() {
+    if (email !== email) {
+      console.log("qwert");
+    }
+    signInWithEmailAndPassword(auth, email, password)
+      .then((user) => {
+        console.log(user);
+        setEmail("");
+        setPassword("");
+        nav("/");
+        authnotify();
+      })
+      .catch((error) => {
+        notify();
+        console.log("ошибка ", error);
+      });
+  }
 
   return (
     <>
@@ -34,13 +58,25 @@ function Auth() {
             <div className="block__auth__form flex flex-col items-center mt-[88px]">
               <div className="flex flex-col gap-[20px]">
                 <p>Ваш логин</p>
-                <Input background={"none"} size="lg" />
+                <Input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  background={"none"}
+                  size="lg"
+                />
               </div>
               <div className="flex flex-col gap-[20px] mt-[28px]">
                 <p>Ваш пароль</p>
-                <Input background={"none"} size="lg" />
+                <Input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  background={"none"}
+                  size="lg"
+                />
               </div>
-              <button className="mt-[58px]">Вход</button>
+              <button onClick={AuthClickHandler} className="mt-[58px]">
+                Вход
+              </button>
               <div className="flex justify-center gap-[7px] mt-[84px]">
                 <p className="block__auth__form_p">Нет аккаунта?</p>
                 <p className="block__auth__form_p decoration-[3px]">

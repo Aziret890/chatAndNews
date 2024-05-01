@@ -1,12 +1,41 @@
 import Header from "../header/Header";
 import "./chat.scss";
-import { IoSearchOutline } from "react-icons/io5";
-import avatarkaCard from "../../assets/chat__avatarka.svg";
+// import avatarkaCard from "../../assets/chat__avatarka.svg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { onSnapshot, doc } from "firebase/firestore";
+import { db } from "../../firebace/firebse";
+import { useAuth } from "../../ctx/useAuth";
+import SearchUsers from "../searchUsers/searchUsers";
+import { useAppDispatch } from "../../store/store";
+import { changeChat } from "../../store/slice/chat";
 
 function Chat() {
   const [chat, setchat] = useState<boolean>(false);
+  const [chats, setChats] = useState({});
+  const { user } = useAuth();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (!user) return;
+    const unsub = onSnapshot(doc(db, "userChats", user?.uid!), async (dosc) => {
+      setChats(dosc.data() as any);
+      // const combinedId =
+      //   "5ubgrVq21rNDTbBgURHt1cSTaMH3Main7LNtxhahnLi9ild7k2sxJLG3";
+      // await updateDoc(doc(db, "userChats", user?.uid!), {
+      //   [combinedId + ".userInfo"]: {
+      //     firstName: "Kambarov",
+      //     lastName: "Amir",
+      //     uid: "5ubgrVq21rNDTbBgURHt1cSTaMH3",
+      //   },
+      //   [combinedId + ".lastMessage"]: {
+      //     text: "Здраствуйте",
+      //   },
+      // });
+    });
+    return () => unsub();
+  }, [user?.uid]);
+
   return (
     <>
       <Header />
@@ -34,32 +63,46 @@ function Chat() {
               }`}
             />
             <hr />
-            <input
-              type="text"
-              className="chat__content__search"
-              placeholder="Поиск"
-            />
-            <IoSearchOutline
-              className="chat__content__search__icon"
-              size={18}
-            />
-            <Link to="/PageDetailchat">
-              <div className="chat__content__card">
-                <div className="chat__content__card__avatarka__wrap">
-                  <img
-                    src={avatarkaCard}
-                    alt=""
-                    className="chat__content__card__avatarka"
-                  />
-                </div>
-                <div className="chat__content__card__info">
-                  <div>
-                    <h2 className="chat__content__card__name">Айназик</h2>
-                    <h2 className="chat__content__card__text">Здравствуйте!</h2>
+
+            <SearchUsers />
+
+            {Object.entries(chats).map((chat: any) => {
+              const _chat = chat[1];
+              const select = _chat.userInfo;
+              const combinedId =
+                user && user?.uid > select.uid
+                  ? user?.uid + select.uid
+                  : select.uid + user?.uid;
+              return (
+                <Link
+                  to={`/PageDetailchat`}
+                  key={chat[0]}
+                  onClick={() => {
+                    dispatch(
+                      changeChat({
+                        chatId: combinedId,
+                        user: select,
+                      })
+                    );
+                  }}
+                  className="chat__content__card"
+                >
+                  <div className="chat__content__card__avatarka__wrap">
+                    {/* {_chat.userInfo.lastName.slice(0, 1)} */}
                   </div>
-                </div>
-              </div>
-            </Link>
+                  <div className="chat__content__card__info">
+                    <h2 className="chat__content__card__name">
+                      {_chat.userInfo?.firstName +
+                        " " +
+                        _chat.userInfo.lastName}
+                    </h2>
+                    <h2 className="chat__content__card__text">
+                      {_chat.lastMessage.text}
+                    </h2>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
