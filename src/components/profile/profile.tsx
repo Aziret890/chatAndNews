@@ -1,26 +1,36 @@
-/* eslint-disable no-empty */
 import "../profile/profile.scss";
 import avatatIcon from "../../assets/profile-avatar.svg";
 import minIcon from "../../assets/profile-mini-icon.svg";
-import { useRef } from "react";
+import { useEffect, useState } from "react";
 import Header2 from "../header2/header2";
+import { getDatabase, ref, child, get } from "firebase/database";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { User } from "../../store/slice/userslice";
+
 function Profile() {
-  const numRef = useRef<null | HTMLInputElement>(null);
-  const familyRef = useRef<null | HTMLInputElement>(null);
-  const telRef = useRef<null | HTMLInputElement>(null);
-  const emailRef = useRef<null | HTMLInputElement>(null);
-  const biographyRef = useRef<null | HTMLInputElement>(null);
-  function HandleValidation() {
-    const refs = [numRef, familyRef, telRef, emailRef, biographyRef];
-    refs.forEach((ref) => {
-      if (ref.current) {
-        ref.current.style.border =
-          ref.current.value.trim() === "" ? "4px solid red" : "4px solid green";
+  const [data, Setdata] = useState<any>();
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const dbRef = ref(getDatabase());
+        get(child(dbRef, `users/`))
+          .then((snapshot) => {
+            if (snapshot.exists()) {
+              const res = Object.values(snapshot.val() as User[]);
+              const curUser = res.find((el) => el.email == user.email);
+              Setdata(curUser);
+              console.log(curUser);
+            } else {
+              console.log("No data available");
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       }
     });
-  }
-
-  function HandleImage() {}
+  }, []);
 
   return (
     <>
@@ -36,11 +46,7 @@ function Profile() {
                   alt=""
                   className="profile__content__cards__back__avatar"
                 />
-
-                <div
-                  className="profile__content__cards__back__mini"
-                  onClick={() => HandleImage}
-                >
+                <div className="profile__content__cards__back__mini">
                   <img
                     src={minIcon}
                     alt=""
@@ -50,43 +56,35 @@ function Profile() {
               </div>
               <div className="profile__content__cards__footer">
                 <div className="profile__content__cards__footer__inputs">
-                  <input
-                    ref={numRef}
-                    type="text"
+                  <div
                     className="profile__content__cards__footer__inputs__input"
-                    required
-                    placeholder="Имя"
-                  />
-
-                  <input
-                    ref={familyRef}
-                    type="text"
-                    className="profile__content__cards__footer__inputs__lastname"
-                    placeholder="Фамилия"
-                  />
-                  <input
-                    ref={telRef}
-                    type="number"
-                    className="profile__content__cards__footer__inputs__tel"
-                    placeholder="Телефон номер"
-                  />
-                  <input
-                    ref={emailRef}
-                    type="email"
-                    className="profile__content__cards__footer__inputs__email"
-                    placeholder="Эл.почта"
-                  />
-                  <input
-                    ref={biographyRef}
-                    type="text"
-                    className="profile__content__cards__footer__inputs__biography"
-                    placeholder="Биография"
-                  />
-                  <button
-                    onClick={HandleValidation}
-                    className="profile__content__cards__footer__inputs__btn"
+                    style={{ color: "black" }}
                   >
-                    Сохранить
+                    <h1 className="input__text">{data && data.lastName}</h1>
+                  </div>
+
+                  <div className="profile__content__cards__footer__inputs__lastname">
+                    <h1 className="input__text">{data && data.firstName}</h1>
+                  </div>
+
+                  <div className="profile__content__cards__footer__inputs__tel">
+                    <h1 className="input__text">{data && data.phoneNum}</h1>
+                  </div>
+                  <div className="profile__content__cards__footer__inputs__email">
+                    <h1 className="input__text">{data && data.email}</h1>
+                  </div>
+                  <div className="profile__content__cards__footer__inputs__biography">
+                    <h1 className="input__text">{data && data.tgLink}</h1>
+                  </div>
+                  <div className="profile__content__cards__footer__inputs__biography">
+                    <h1 className="input__text">{data && data.category}</h1>
+                  </div>
+                  <div className="profile__content__cards__footer__inputs__biography">
+                    <h1 className="input__text">{data && data.group}</h1>
+                  </div>
+
+                  <button className="profile__content__cards__footer__inputs__btn">
+                    Изменить
                   </button>
                 </div>
               </div>

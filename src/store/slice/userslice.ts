@@ -8,11 +8,12 @@ export interface User {
   phoneNum: string;
   group: string;
   category: string;
+  id: string;
 }
 
 export type UserBase = Omit<User, "tgLink" | "phoneNum" | "group" | "category">;
 
-export type UserData = Omit<User, "firstName" | "lastName" | "email">;
+export type UserData = Omit<User, "firstName" | "lastName" | "email" | "id">;
 
 const initialState: User = {
   firstName: "",
@@ -22,6 +23,7 @@ const initialState: User = {
   phoneNum: "",
   group: "",
   category: "",
+  id: "",
 };
 
 const userSlice = createSlice({
@@ -29,26 +31,23 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser(state, action: PayloadAction<User>) {
-      state = { ...state, ...action.payload };
+      state = { ...action.payload };
     },
-    setBaseInfo(state, action: PayloadAction<UserBase | UserData>) {
-      state = { ...state, ...action.payload };
+    setBaseInfo(state, { payload }: PayloadAction<UserBase>) {
+      state.email = payload.email;
+      state.firstName = payload.firstName;
+      state.lastName = payload.lastName;
+      state.id = payload.id;
     },
-    setFirstName(state, action: PayloadAction<string>) {
-      state.firstName = action.payload;
-    },
-    setLastName(state, action: PayloadAction<string>) {
-      state.lastName = action.payload;
-    },
-    setEmail(state, action: PayloadAction<string>) {
-      state.email = action.payload;
-    },
-    setPhoneNum(state, action: PayloadAction<string>) {
-      state.phoneNum = action.payload;
+    setUserInfo(state, { payload }: PayloadAction<UserData>) {
+      state.category = payload.category;
+      state.group = payload.group;
+      state.phoneNum = payload.phoneNum;
+      state.tgLink = payload.tgLink;
     },
   },
 });
 
-export const { setUser, setBaseInfo } = userSlice.actions;
+export const { setUser, setBaseInfo, setUserInfo } = userSlice.actions;
 
 export default userSlice.reducer;

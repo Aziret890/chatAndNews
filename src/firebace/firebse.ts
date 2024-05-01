@@ -21,7 +21,9 @@ function FireBaseInit() {
   const db = getFirestore(app);
   const storage = getStorage(app);
   const database = getDatabase(app);
-  return { auth, db, storage, database };
+  return { auth, db, storage, database, app };
 }
+
+export const { db } = FireBaseInit();
 
 export default FireBaseInit;

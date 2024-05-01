@@ -11,6 +11,22 @@
       font-weight: 700;
       line-height: 28px;
     }
+    &__search_box {
+      position: relative;
+      ul {
+        position: absolute;
+        top: 120%;
+        width: 100%;
+        border-radius: 8px;
+        padding: 10px;
+        backdrop-filter: blur(10px);
+        li {
+          background-color: white;
+          padding: 8px 15px;
+          border-radius: 4px;
+        }
+      }
+    }
 
     &__nav {
       margin: 12px 0 0 0;
@@ -112,8 +128,7 @@
 
       &__info {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
       }
     }
   }

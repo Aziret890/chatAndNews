@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import Header from "../../components/header/Header";
 import Back from "../../shared/images/backgroundReg.png";
 import { Input } from "@chakra-ui/react";
-import { UserData, setBaseInfo } from "../../store/slice/userslice";
-import { useDispatch } from "react-redux";
-import { getDatabase, ref, push, set } from "firebase/database";
+import { User, UserData, setUserInfo } from "../../store/slice/userslice";
+import { useDispatch, useSelector } from "react-redux";
+import { getDatabase, ref, set } from "firebase/database";
+import { RootState } from "../../store/store";
+import { toast } from "react-toastify";
 
 function DataUser() {
-  const nav = useNavigate();
-
   const [userData, setUserData] = useState<UserData>({
     tgLink: "",
     phoneNum: "",
@@ -17,7 +17,11 @@ function DataUser() {
     category: "",
   });
 
+  const user = useSelector((state: RootState) => state.user);
+
+  const nav = useNavigate();
   const dispatch = useDispatch();
+  const regnotify = () => toast.success("Ваши данные сохранены");
 
   const ClickDataUser = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -29,19 +33,27 @@ function DataUser() {
 
   function registerHandler() {
     console.log(userData);
-    const newData: UserData = {
+    const newData: User = {
+      ...user,
       tgLink: userData.tgLink,
       phoneNum: userData.phoneNum,
       group: userData.group,
       category: userData.category,
     };
+
     const db = getDatabase();
-    const postListRef = ref(db, "users");
-    const newPostRef = push(postListRef);
-    set(newPostRef, userData)
+    const postListRef = ref(db, `users/${user.id}`);
+    set(postListRef, newData)
       .then(() => {
-        console.log("успешно");
-        dispatch(setBaseInfo(newData));
+        dispatch(setUserInfo(newData));
+        regnotify();
+        nav("/auth");
+        setUserData({
+          tgLink: "",
+          phoneNum: "",
+          group: "",
+          category: "",
+        });
       })
       .catch((error) => {
         console.log("ошикба", error);

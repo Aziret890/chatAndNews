@@ -12,22 +12,6 @@ export async function getNews() {
   }
 }
 
-export async function getNewsid(id: any) {
-  try {
-    const docref = doc(db, "news", id);
-    const docshop = await getDoc(docref);
-
-    if (docshop.exists()) {
-      return docshop.data;
-    } else {
-      console.log("ошибка");
-      return null;
-    }
-  } catch (error) {
-    console.log("err");
-  }
-}
-
 type TypeParametres = "title" | "text" | "image" | "date" | "id";
 
 export async function create(values: Record<TypeParametres, string | number>) {
